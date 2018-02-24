@@ -4,14 +4,14 @@ var request = require('request');
 var inquirer = require('inquirer');
 
 program
-  .version('0.0.1')
+  .version('0.1.0')
   .arguments('<cmd>')
   .action(function (cmd) {
      cmdValue = cmd;
   });
- 
+
 program.parse(process.argv);
- 
+
 if (typeof cmdValue === 'undefined') {
   console.error('no command given!');
   process.exit(1);

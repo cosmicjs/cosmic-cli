@@ -1,0 +1,41 @@
+[
+  {
+    "cmd": "login",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "login",
+    "options": [ ]
+  },
+  {
+    "cmd": "add-object",
+    "requiresToken": true,
+    "options": [
+      {
+        "flags": "-s, --slug [value]",
+        "description": "bucket slug"
+      },
+      {
+        "flags": "-t, --title [value]",
+        "description": "bucket title"
+      }
+    ]
+  },
+  {
+    "cmd": "edit-object",
+    "requiresToken": true,
+    "options": [
+      {
+        "flags": "-s, --slug [value]",
+        "description": "object slug"
+      },
+      {
+        "flags": "-p, --property [value]",
+        "description": "name of property to edit"
+      },
+      {
+        "flags": "-v, --value [value]",
+        "description": "new value for specified property"
+      }
+    ]
+  }
+]

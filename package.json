@@ -4,14 +4,21 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "cosmic": "./index.js"
+    "cosmic": "./testindex.js"
   },
   "dependencies": {
+    "colors": "^1.1.2",
     "commander": "^2.9.0",
+    "configstore": "^3.1.1",
+    "cosmicjs": "^3.1.1",
     "inquirer": "^3.1.0",
     "request": "^2.81.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
