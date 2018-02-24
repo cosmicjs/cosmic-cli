@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "cosmic": "./testindex.js"
+    "cosmic": "./index.js"
   },
   "dependencies": {
     "colors": "^1.1.2",
