@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-var program = require('commander');
-var request = require('request');
-var inquirer = require('inquirer');
+var program = require('commander')
+var request = require('request')
+var inquirer = require('inquirer')
 
 var commands = require('./commands')
 var auth = require('./lib/cosmic_auth')
 var print = require('./lib/output')
-var colors = require('colors');
+var colors = require('colors')
 var customScripts = require('./non_standard_commands')
 
 
@@ -15,27 +15,15 @@ var Cosmic = require('cosmicjs')({
   token: token
 })
 
-// program
-//   .version('0.1.0')
-//   .command('setup [env]')
-//   .description('run setup commands for all envs')
-  // .option("-s, --setup_mode [mode]", "Which setup mode to use")
-//   .action(function(env, options){
-//     var mode = options.setup_mode || "normal";
-//     env = env || 'all';
-//     console.log('setup for %s env(s) with %s mode', env, mode);
-//   });
-// program.parse(process.argv);
-
 program
   .version('0.1.0')
 
-commands.forEach(command => {
+commands.forEach(function(command) {
   var buildUp = program
     .command(command.cmd)
-    .description("thing")
+    .description('thing')
     // .option("-s, --setup_mode [mode]", "Which setup mode to use")
-  command.options.forEach(option => {
+  command.options.forEach(function(option) {
     buildUp.option(option.flags, option.description)
   })
 
@@ -43,12 +31,14 @@ commands.forEach(command => {
     .action(function(invokedCmd) {
       console.log(invokedCmd.slug) // NOTE: options come in like this
       if (command.requiresToken && !token) {
-        print.error('Authentication required! Please type `cosmic login` to authenticate.');
-        process.exit(1);
+        print.error('Authentication required! Please type `cosmic login` to authenticate.')
+        process.exit(1)
       }
 
       if (command.custom) {
         runCustomScript(command, invokedCmd)
+      } else {
+        runCosmicCommand(command, invokedCmd)
       }
       // load cosmic before this with the token? (like top of file.) check here if auth needed or not.
       // how do we create callbacks through json. All things will have a method in cosmicjs-node?
@@ -58,14 +48,40 @@ commands.forEach(command => {
 
 function runCustomScript(command, invokedCmd) {
   if (!customScripts[command.customScript]) {
-    print.error('Error with custom command ' + command.cmd + '. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'));
-    process.exit(1);
+    print.error('Error with custom command ' + command.cmd + '. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
+    process.exit(1)
   }
 
   customScripts[command.customScript]()
 }
 
-program.parse(process.argv);
+function runCosmicCommand(command, invokedCmd) {
+  var params = {}
+  command.options.forEach(function(option) {
+    params[option.param] = invokedCmd[option.param]
+  })
+
+  var cosmicMethod = command.cosmicMethod || {}
+
+  if (!cosmicMethod.useBucket) {
+    if (!Cosmic[cosmicMethod.method]) {
+      print.error('Method ' + cosmicMethod.method + ' does not exist on Cosmic. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
+      process.exit(1)
+    }
+
+    Cosmic[cosmicMethod.method](params).then(function(res){
+      print.success('Success')
+      console.log(res)
+      process.exit(0)
+    }).catch(function(err) {
+      print.error('Error:')
+      console.log(err)
+      process.exit(1)
+    })
+  }
+}
+
+program.parse(process.argv)
 
 // program
 //   .version('0.1.0')

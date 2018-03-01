@@ -7,14 +7,20 @@
     "options": [ ]
   },
   {
-    "cmd": "add-object",
+    "cmd": "add-bucket",
     "requiresToken": true,
+    "cosmicMethod": {
+      "useBucket": false,
+      "method": "addBucket"
+    },
     "options": [
       {
+        "param": "slug",
         "flags": "-s, --slug [value]",
         "description": "bucket slug"
       },
       {
+        "param": "title",
         "flags": "-t, --title [value]",
         "description": "bucket title"
       }
