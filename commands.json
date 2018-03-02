@@ -7,6 +7,29 @@
     "options": [ ]
   },
   {
+    "cmd": "use-bucket",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "useBucket",
+    "options": [
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "bucket slug"
+      },
+      {
+        "param": "read_key",
+        "flags": "-k, --read_key [value]",
+        "description": "read key"
+      },
+      {
+        "param": "write_key",
+        "flags": "-w, --write_key [value]",
+        "description": "write key"
+      }
+    ]
+  },
+  {
     "cmd": "add-bucket",
     "requiresToken": true,
     "cosmicMethod": {
@@ -27,21 +50,223 @@
     ]
   },
   {
-    "cmd": "edit-object",
-    "requiresToken": true,
+    "cmd": "get-objects",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getObjects"
+    },
     "options": [
       {
+        "param": "limit",
+        "flags": "-l, --limit [value]",
+        "description": "[optional] limit on number of objects to return"
+      },
+      {
+        "param": "skip",
+        "flags": "-s, --skip [value]",
+        "description": "[optional] # objects to skip"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "[optional] specify locale filter"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "[optional] specify locale filter"
+      }
+    ]
+  },
+  {
+    "cmd": "get-object",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getObject"
+    },
+    "options": [
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "bucket slug"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "[optional] specify locale filter"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "[optional] specify locale filter"
+      }
+    ]
+  },
+  {
+    "cmd": "get-object-types",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getObjectTypes"
+    },
+    "options": [
+      {
+        "param": "limit",
+        "flags": "-l, --limit [value]",
+        "description": "[optional] limit on number of objects to return"
+      },
+      {
+        "param": "skip",
+        "flags": "-s, --skip [value]",
+        "description": "[optional] # objects to skip"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "[optional] specify locale filter"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "[optional] specify locale filter"
+      }
+    ]
+  },
+  {
+    "cmd": "add-object-type",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "addObjectType"
+    },
+    "options": [
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "bucket slug"
+      },
+      {
+        "param": "title",
+        "flags": "-t, --title [value]",
+        "description": "plural title of your object type"
+      },
+      {
+        "param": "singular",
+        "flags": "--singular [value]",
+        "description": "singular title of your object type"
+      }
+    ]
+  },
+  {
+    "cmd": "delete-object-type",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "deleteObjectType"
+    },
+    "options": [
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "object slug to delete"
+      }
+    ]
+  },
+  {
+    "cmd": "add-object",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "addObject"
+    },
+    "options": [
+      {
+        "param": "type_slug",
+        "flags": "-o, --type_slug [value]",
+        "description": "add object to object type"
+      },
+      {
+        "param": "title",
+        "flags": "-t, --title [value]",
+        "description": "your object title"
+      },
+      {
+        "param": "slug",
         "flags": "-s, --slug [value]",
         "description": "object slug"
       },
       {
-        "flags": "-p, --property [value]",
-        "description": "name of property to edit"
+        "param": "content",
+        "flags": "-c, --content [value]",
+        "description": "add content to your object"
       },
       {
-        "flags": "-v, --value [value]",
-        "description": "new value for specified property"
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "draft, published, defaults to published"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "add localization to the object"
       }
     ]
-  }
+  },
+  {
+    "cmd": "edit-object",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "editObject"
+    },
+    "options": [
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "object slug"
+      },
+      {
+        "param": "type_slug",
+        "flags": "-o, --type_slug [value]",
+        "description": "add object to object type"
+      },
+      {
+        "param": "title",
+        "flags": "-t, --title [value]",
+        "description": "your object title"
+      },
+      {
+        "param": "content",
+        "flags": "-c, --content [value]",
+        "description": "add content to your object"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "draft, published, defaults to published"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "add localization to the object"
+      }
+    ]
+  },
+  {
+    "cmd": "delete-object",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "deleteObjectType"
+    },
+    "options": [
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "object slug to delete"
+      }
+    ]
+  },
 ]

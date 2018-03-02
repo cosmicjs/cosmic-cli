@@ -4,3 +4,4 @@
 */
 
 module.exports.login = require('./login')
+module.exports.useBucket = require('./use-bucket')

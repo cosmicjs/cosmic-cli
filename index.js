@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 var program = require('commander')
-var request = require('request')
-var inquirer = require('inquirer')
 
 var commands = require('./commands')
 var auth = require('./lib/cosmic_auth')
+var bucketConfig = require('./lib/bucket_config')
 var print = require('./lib/output')
 var colors = require('colors')
 var customScripts = require('./non_standard_commands')
@@ -14,6 +13,8 @@ var token = auth.getCosmicToken()
 var Cosmic = require('cosmicjs')({
   token: token
 })
+var bucketOpts = bucketConfig.getCosmicBucketOptions()
+var bucket = Cosmic.bucket(bucketOpts)
 
 program
   .version('0.1.0')
@@ -29,7 +30,6 @@ commands.forEach(function(command) {
 
   buildUp
     .action(function(invokedCmd) {
-      console.log(invokedCmd.slug) // NOTE: options come in like this
       if (command.requiresToken && !token) {
         print.error('Authentication required! Please type `cosmic login` to authenticate.')
         process.exit(1)
@@ -52,7 +52,7 @@ function runCustomScript(command, invokedCmd) {
     process.exit(1)
   }
 
-  customScripts[command.customScript]()
+  customScripts[command.customScript](invokedCmd)
 }
 
 function runCosmicCommand(command, invokedCmd) {
@@ -63,22 +63,56 @@ function runCosmicCommand(command, invokedCmd) {
 
   var cosmicMethod = command.cosmicMethod || {}
 
-  if (!cosmicMethod.useBucket) {
-    if (!Cosmic[cosmicMethod.method]) {
-      print.error('Method ' + cosmicMethod.method + ' does not exist on Cosmic. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
-      process.exit(1)
-    }
+  var scope = cosmicMethod.useBucket ? bucket : Cosmic
 
-    Cosmic[cosmicMethod.method](params).then(function(res){
-      print.success('Success')
-      console.log(res)
-      process.exit(0)
-    }).catch(function(err) {
-      print.error('Error:')
-      console.log(err)
-      process.exit(1)
-    })
+  if (!scope[cosmicMethod.method]) {
+    var scopeStr = cosmicMethod.useBucket ? 'Cosmic.bucket' : 'Cosmic'
+    print.error('Method ' + cosmicMethod.method + ' does not exist on ' + scopeStr + '. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
+    process.exit(1)
   }
+
+  scope[cosmicMethod.method](params).then(function(res){
+    print.success('Success')
+    console.log(res)
+    process.exit(0)
+  }).catch(function(err) {
+    print.error('Error:')
+    console.log(err)
+    process.exit(1)
+  })
+
+  // if (!cosmicMethod.useBucket) {
+  //   if (!Cosmic[cosmicMethod.method]) {
+  //     print.error('Method ' + cosmicMethod.method + ' does not exist on Cosmic. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
+  //     process.exit(1)
+  //   }
+  //
+  //
+  //   Cosmic[cosmicMethod.method](params).then(function(res){
+  //     print.success('Success')
+  //     console.log(res)
+  //     process.exit(0)
+  //   }).catch(function(err) {
+  //     print.error('Error:')
+  //     console.log(err)
+  //     process.exit(1)
+  //   })
+  // } else {
+  //   if (!bucket[cosmicMethod.method]) {
+  //     print.error('Method ' + cosmicMethod.method + ' does not exist on Cosmic. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
+  //     process.exit(1)
+  //   }
+  //
+  //   Cosmic[cosmicMethod.method](params).then(function(res){
+  //     print.success('Success')
+  //     console.log(res)
+  //     process.exit(0)
+  //   }).catch(function(err) {
+  //     print.error('Error:')
+  //     console.log(err)
+  //     process.exit(1)
+  //   })
+  // }
 }
 
 program.parse(process.argv)

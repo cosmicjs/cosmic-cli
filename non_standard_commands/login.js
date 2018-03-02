@@ -3,7 +3,6 @@ var print = require('../lib/output')
 
 
 function handler() {
-  console.log('hello')
   auth.setToken(function(err, token) {
     if (err || !token) {
       print.error('Authentication Failed')
