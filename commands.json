@@ -363,7 +363,7 @@
       {
         "param": "event",
         "flags": "--event [value]",
-        "description": "enum: [object.created.draft, object.created.published object.edited.draft, object.edited.published object.deleted, media.created media.edited, media.deleted]"
+        "description": "enum: [object.created.draft, object.created.published, object.edited.draft, object.edited.published, object.deleted, media.created, media.edited, media.deleted]"
       },
       {
         "param": "endpoint",
