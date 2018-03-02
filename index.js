@@ -22,7 +22,7 @@ program
 commands.forEach(function(command) {
   var buildUp = program
     .command(command.cmd)
-    .description('thing')
+    .description(command.description)
     // .option("-s, --setup_mode [mode]", "Which setup mode to use")
   command.options.forEach(function(option) {
     buildUp.option(option.flags, option.description)
@@ -52,7 +52,7 @@ function runCustomScript(command, invokedCmd) {
     process.exit(1)
   }
 
-  customScripts[command.customScript](invokedCmd)
+  customScripts[command.customScript](invokedCmd, bucket)
 }
 
 function runCosmicCommand(command, invokedCmd) {

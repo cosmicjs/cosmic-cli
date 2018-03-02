@@ -1,6 +1,7 @@
 [
   {
     "cmd": "login",
+    "description": "",
     "requiresToken": false,
     "custom": true,
     "customScript": "login",
@@ -8,6 +9,7 @@
   },
   {
     "cmd": "use-bucket",
+    "description": "",
     "requiresToken": false,
     "custom": true,
     "customScript": "useBucket",
@@ -31,6 +33,7 @@
   },
   {
     "cmd": "add-bucket",
+    "description": "",
     "requiresToken": true,
     "cosmicMethod": {
       "useBucket": false,
@@ -51,6 +54,7 @@
   },
   {
     "cmd": "get-objects",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -81,6 +85,7 @@
   },
   {
     "cmd": "get-object",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -106,6 +111,7 @@
   },
   {
     "cmd": "get-object-types",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -136,6 +142,7 @@
   },
   {
     "cmd": "add-object-type",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -161,6 +168,7 @@
   },
   {
     "cmd": "delete-object-type",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -176,6 +184,7 @@
   },
   {
     "cmd": "add-object",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -216,6 +225,7 @@
   },
   {
     "cmd": "edit-object",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
@@ -256,10 +266,11 @@
   },
   {
     "cmd": "delete-object",
+    "description": "",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
-      "method": "deleteObjectType"
+      "method": "deleteObject"
     },
     "options": [
       {
@@ -269,4 +280,112 @@
       }
     ]
   },
+  {
+    "cmd": "add-media",
+    "description": "",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "addMedia",
+    "options": [
+      {
+        "param": "file",
+        "flags": "-f, --file [value]",
+        "description": "path to file of media"
+      },
+      {
+        "param": "title",
+        "flags": "-t, --title [value]",
+        "description": "title to save media file under"
+      },
+      {
+        "param": "folder",
+        "flags": "--folder [value]",
+        "description": "media folder slug"
+      }
+    ]
+  },
+  {
+    "cmd": "get-media",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getMedia"
+    },
+    "options": [
+      {
+        "param": "limit",
+        "flags": "-l, --limit [value]",
+        "description": "[optional] limit on number of media objects to return"
+      },
+      {
+        "param": "skip",
+        "flags": "-s, --skip [value]",
+        "description": "[optional] # media objects to skip"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "[optional] specify locale filter"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "[optional] specify locale filter"
+      }
+    ]
+  },
+  {
+    "cmd": "delete-media",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "deleteMedia"
+    },
+    "options": [
+      {
+        "param": "id",
+        "flags": "--id [value]",
+        "description": "id of media to delete"
+      }
+    ]
+  },
+  {
+    "cmd": "add-webhook",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "addWebhook"
+    },
+    "options": [
+      {
+        "param": "event",
+        "flags": "--event [value]",
+        "description": "enum: [object.created.draft, object.created.published object.edited.draft, object.edited.published object.deleted, media.created media.edited, media.deleted]"
+      },
+      {
+        "param": "endpoint",
+        "flags": "--endpoint [value]",
+        "description": "The endpoint that will receive the data"
+      }
+    ]
+  },
+  {
+    "cmd": "delete-webhook",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "deleteWebhook"
+    },
+    "options": [
+      {
+        "param": "id",
+        "flags": "--id [value]",
+        "description": "id of webhook to delete"
+      }
+    ]
+  }
 ]
