@@ -1,10 +1,14 @@
 var print = require('../lib/output')
 var fs = require('fs')
+var upath = require('upath')
 
 
 function handler(invokedCmd, bucket) {
   var buffer = fs.readFileSync(invokedCmd.file)
-  var media_object = { originalname: invokedCmd.title || 'media', buffer: buffer }
+
+  var fileExt = upath.extname(invokedCmd.file)
+  var originalname = upath.defaultExt(invokedCmd.title || 'media', fileExt)
+  var media_object = { originalname: originalname, buffer: buffer }
 
   bucket.addMedia({
     media: media_object,
