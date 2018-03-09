@@ -54,7 +54,18 @@ function runCustomScript(command, invokedCmd) {
 function runCosmicCommand(command, invokedCmd) {
   var params = {}
   command.options.forEach(function(option) {
-    params[option.param] = invokedCmd[option.param]
+    var paramValue = invokedCmd[option.param]
+    if (paramValue && option.isJsonString) {
+      try {
+        var jsonObj = JSON.parse(paramValue)
+        paramValue = jsonObj
+      } catch (e) {
+        console.log(e)
+        print.error('Failed to parse json string for argument ' + option.param + '. Please verify the json is correctly structured.')
+        process.exit(1)
+      }
+    }
+    params[option.param] = paramValue
   })
 
   var cosmicMethod = command.cosmicMethod || {}

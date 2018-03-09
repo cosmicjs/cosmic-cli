@@ -163,6 +163,12 @@
         "param": "singular",
         "flags": "--singular [value]",
         "description": "singular title of your object type"
+      },
+      {
+        "param": "metafields",
+        "flags": "--metafields [value]",
+        "description": "Default Metafields for each Object in this type",
+        "isJsonString": true
       }
     ]
   },
