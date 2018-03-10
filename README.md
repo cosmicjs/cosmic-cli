@@ -55,7 +55,7 @@ Success
   limit: 1 }
 ```
 
-Now you are ready to use any of the commands to have full control over your bucket.
+Now you are ready to use any of the commands to have full control over your buckets!
 
 ## Usage
 
@@ -68,6 +68,36 @@ All cosmic CLI commands are of the format:
 Run `cosmic -h` for a list of all commands. The list is also included at the bottom of this README.
 
 Run `cosmic [command] -h` for details on options for a specific command.
+
+### Examples
+
+Below are a few examples of commands. Only a handful of the possible options are shown for the commands.
+
+**Creating an Object Type and then an Instance**
+
+Creating a planet object type, and specifying default metafields all instances should have.
+
+`$ cosmic add-object-type --slug planet-type --title 'Planet Objects' --metafields '[{"type":"text", "key": "shape", "value": "Sphere"}]'`
+
+Making an edit to the object type
+
+`$ cosmic edit-object-type -s planet-type --title 'PlANeT oBject'`
+
+Creating an instance
+
+`$ cosmic add-object add-object --type_slug planet-type --title 'Clypso 6Y'`
+
+**Uploading Image Files to a Bucket**
+
+We upload myLocalImage.png from our computer to Cosmic with the name provided to -t, and into the specified folder.
+
+Using shorthand params -f for --file and -t for --title
+
+`$ cosmic add-media -f ../myLocalImage.png -t myNameForFileOnCosmic.png --folder product-images`
+
+You can also give a name without an extension, and it will parse the extension for you.
+
+`$ cosmic add-media -f ../myLocalImage.png -t myNameForFileOnCosmic`
 
 ### JSON String Inputs
 
@@ -92,36 +122,6 @@ The json string option is convenient in some use cases, and is included on the f
 *   edit-object
 *   edit-object-type
 
-### Examples
-
-Below are a few examples of commands. Only a handful of the possible options are shown for the commands.
-Run `cosmic [command] -h` to see a full list of options.
-
-**Uploading Image Files to a Bucket**
-
-We upload myLocalImage.png from our computer to Cosmic with the name provided to -t, and into the specified folder.
-
-Using shorthand params -f for --file and -t for --title
-
-`$ cosmic add-media -f ../myLocalImage.png -t myNameForFileOnCosmic.png --folder product-images`
-
-You can also give a name without an extension, and it will parse the extension for you.
-
-`$ cosmic add-media -f ../myLocalImage.png -t myNameForFileOnCosmic`
-
-**Creating an Object Type and then an Instance**
-
-Creating a planet object type, and specifying default metafields all instances should have.
-
-`$ cosmic add-object-type --slug planet-type --title 'Planet Objects' --metafields '[{"type":"text", "key": "shape", "value": "Sphere"}]'`
-
-Making an edit to the object type
-
-`$ cosmic edit-object-type -s planet-type --title 'PlANeT oBject'`
-
-Creating an instance
-
-`$ cosmic add-object add-object --type_slug planet-type --title 'Clypso 6Y'`
 
 ### Commands
 
