@@ -148,6 +148,7 @@
       "useBucket": true,
       "method": "addObjectType"
     },
+    "allowRawJSON": true,
     "options": [
       {
         "param": "slug",
@@ -169,6 +170,13 @@
         "flags": "-m, --metafields [value]",
         "description": "Default Metafields for each Object in this type",
         "isJsonString": true
+      },
+      {
+        "param": "json",
+        "flags": "-j, --json [value]",
+        "description": "Json string with specifications for the new object type. Ex: '[{\"slug\":\"my-slug\", \"title\": \"My awesome title\", \"metafields\": {...}}]'",
+        "isJsonString": true,
+        "isWrapperParameter": true
       }
     ]
   },
@@ -201,6 +209,13 @@
         "flags": "-m, --metafields [value]",
         "description": "Default Metafields for each Object in this type",
         "isJsonString": true
+      },
+      {
+        "param": "json",
+        "flags": "-j, --json [value]",
+        "description": "Json string with specifications for the edits to the object type. Ex: '[{\"slug\":\"my-slug\", \"metafields\": {...}}]'",
+        "isJsonString": true,
+        "isWrapperParameter": true
       }
     ]
   },
@@ -264,6 +279,13 @@
         "flags": "-m, --metafields [value]",
         "description": "Default Metafields for each Object in this type",
         "isJsonString": true
+      },
+      {
+        "param": "json",
+        "flags": "-j, --json [value]",
+        "description": "Json string with specifications for the new object. Ex: '[{\"type_slug\":\"my-obj-type\", \"slug\":\"my-slug\", \"title\": \"My new obj\"}]'",
+        "isJsonString": true,
+        "isWrapperParameter": true
       }
     ]
   },
@@ -311,6 +333,13 @@
         "flags": "-m, --metafields [value]",
         "description": "Default Metafields for each Object in this type",
         "isJsonString": true
+      },
+      {
+        "param": "json",
+        "flags": "-j, --json [value]",
+        "description": "Json string with specifications for the object edits. Ex: '[{\"slug\":\"my-slug\", \"title\": \"Altered Title\"}]'",
+        "isJsonString": true,
+        "isWrapperParameter": true
       }
     ]
   },

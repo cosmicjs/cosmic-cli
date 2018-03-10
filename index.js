@@ -42,6 +42,8 @@ commands.forEach(function(command) {
     })
 })
 
+program.parse(process.argv)
+
 function runCustomScript(command, invokedCmd) {
   if (!customScripts[command.customScript]) {
     print.error('Error with custom command ' + command.cmd + '. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
@@ -52,21 +54,7 @@ function runCustomScript(command, invokedCmd) {
 }
 
 function runCosmicCommand(command, invokedCmd) {
-  var params = {}
-  command.options.forEach(function(option) {
-    var paramValue = invokedCmd[option.param]
-    if (paramValue && option.isJsonString) {
-      try {
-        var jsonObj = JSON.parse(paramValue)
-        paramValue = jsonObj
-      } catch (e) {
-        console.log(e)
-        print.error('Failed to parse json string for argument ' + option.param + '. Please verify the json is correctly structured and has quotes around both keys and values.')
-        process.exit(1)
-      }
-    }
-    params[option.param] = paramValue
-  })
+  var params = parseCosmicParameters(command, invokedCmd)
 
   var cosmicMethod = command.cosmicMethod || {}
 
@@ -89,4 +77,31 @@ function runCosmicCommand(command, invokedCmd) {
   })
 }
 
-program.parse(process.argv)
+function parseCosmicParameters(command, invokedCmd) {
+  var params = {}
+  command.options.forEach(function(option) {
+    var paramValue = invokedCmd[option.param]
+    var addToParams = true
+    if (paramValue && option.isJsonString) {
+      try {
+        var jsonObj = JSON.parse(paramValue)
+        paramValue = jsonObj
+
+        if (option.isWrapperParameter) {
+          params = Object.assign(params, paramValue) // if this a wrapper for real parameters (like --json) assign those
+          addToParams = false
+        }
+
+      } catch (e) {
+        print.error('Failed to parse json string for argument ' + option.param + '. Please verify the json is correctly structured and has quotes around both keys and values.')
+        process.exit(1)
+      }
+    }
+
+    if (addToParams) { // add the option directly to params unless a special case occurred that flipped addToParams to false
+      params[option.param] = paramValue
+    }
+  })
+
+  return params
+}
