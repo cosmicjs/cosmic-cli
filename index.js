@@ -20,9 +20,11 @@ program
   .version('0.1.0')
 
 commands.forEach(function(command) {
+
   var buildUp = program
     .command(command.cmd)
     .description(command.description)
+
   command.options.forEach(function(option) {
     buildUp.option(option.flags, option.description)
   })
@@ -43,6 +45,10 @@ commands.forEach(function(command) {
 })
 
 program.parse(process.argv)
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp()
+}
 
 function runCustomScript(command, invokedCmd) {
   if (!customScripts[command.customScript]) {

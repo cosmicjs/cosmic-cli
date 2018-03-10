@@ -1,5 +1,12 @@
 [
   {
+    "cmd": "begin",
+    "description": "Guide to Getting Started",
+    "custom": true,
+    "customScript": "begin",
+    "options": [ ]
+  },
+  {
     "cmd": "login",
     "description": "",
     "requiresToken": false,

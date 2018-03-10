@@ -6,3 +6,4 @@
 module.exports.login = require('./login')
 module.exports.useBucket = require('./use-bucket')
 module.exports.addMedia = require('./add-media')
+module.exports.begin = require('./begin')
