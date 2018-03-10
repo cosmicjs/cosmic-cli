@@ -155,7 +155,6 @@
       "useBucket": true,
       "method": "addObjectType"
     },
-    "allowRawJSON": true,
     "options": [
       {
         "param": "slug",
