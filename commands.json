@@ -472,5 +472,36 @@
         "description": "id of webhook to delete"
       }
     ]
+  },
+  {
+    "cmd": "add-user",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "addUser"
+    },
+    "options": [
+      {
+        "param": "email",
+        "flags": "-e , --email [value]",
+        "description": "The new user's email"
+      },
+      {
+        "param": "role",
+        "flags": "-r, --role [value]",
+        "description": "admin, developer, editor or contributor"
+      },
+      {
+        "param": "first_name",
+        "flags": "--first_name [value]",
+        "description": "The new user's first name"
+      },
+      {
+        "param": "last_name",
+        "flags": "--last_name [value]",
+        "description": "The new user's last name"
+      }
+    ]
   }
 ]
