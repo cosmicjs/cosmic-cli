@@ -61,7 +61,7 @@ function runCosmicCommand(command, invokedCmd) {
         paramValue = jsonObj
       } catch (e) {
         console.log(e)
-        print.error('Failed to parse json string for argument ' + option.param + '. Please verify the json is correctly structured.')
+        print.error('Failed to parse json string for argument ' + option.param + '. Please verify the json is correctly structured and has quotes around both keys and values.')
         process.exit(1)
       }
     }
