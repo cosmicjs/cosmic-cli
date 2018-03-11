@@ -6,7 +6,9 @@ The official command line tool for [Cosmic JS](https://cosmicjs.com).  It includ
 
 Install the CLI globally:
 
-`npm i -g cosmic-cli`
+```
+npm i -g cosmic-cli
+```
 
 To check that it installed properly, run `cosmic` on your command line and you should see a list of commands.
 
