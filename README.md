@@ -1,8 +1,8 @@
-# cosmic-cli
+# Cosmic CLI
 
-A Command Line Tool for Managing Your Cosmic JS Buckets
+The official command line tool for [Cosmic JS](https://cosmicjs.com).  It includes all of the awesome features of the [Cosmic JS NPM module](https://github.com/cosmicjs/cosmicjs-node).  Use it to log in to your Cosmic JS account, manage your Buckets and manage data, files and users withing your Buckets.
 
-## Installing
+## 🛠️ Installation
 
 Install the CLI globally:
 
@@ -10,13 +10,16 @@ Install the CLI globally:
 
 To check that it installed properly, run `cosmic` on your command line and you should see a list of commands.
 
-## Getting Started
+## 🏁Getting Started
 
 All commands are of the form: `cosmic [command] [command-options]`. Let's walk through the commands you need to
-get started.
+get started.  For an introduction to the power of the Cosmic CLI run the `begin` command.
+```
+cosmic begin
+```
 
 
-### Login
+### 🔐 Login
 
 Use your credentials from (cosmicjs.com) to login on the command line. You will only have to do this once.
 
@@ -27,13 +30,20 @@ $ cosmic login
 Authenticated
 ```
 
-### Use bucket
+## Usage
+
+All cosmic CLI commands are of the format:
+
+`Usage: cosmic [command] [options]`
+
+
+### Use Bucket
 
 Now that you are logged in, you can connect to buckets. To connect to the bucket with slug 'wedding-site':
 
 ```bash
-$ cosmic use-bucket -s wedding-site --read_key my_read_key --write_key my_write_key
-Now using bucket wedding-site
+$ cosmic use-bucket -s simple-react-blog --read_key my_read_key --write_key my_write_key
+Now using bucket simple-react-blog
 ```
 
 To test that we connected to the bucket properly:
@@ -41,29 +51,24 @@ To test that we connected to the bucket properly:
 ```
 $ cosmic get-objects --limit 1
 Success
-{ objects:
-   [ { _id: '55b3da7740d7a3791b000002',
-       bucket: '55b3d557df0fb1df7600004b',
-       slug: 'main-menu',
-       title: 'Main Menu',
-       content: '<p><br></p>',
+{ objects: 
+   [ { _id: '59df6dd5fd8d731b2100118d',
+       bucket: '59df6dcbfd8d731b21001188',
+       slug: 'jane-doe',
+       title: 'Jane Doe',
+       content: '<p>Something about Jane...</p>',
        metafields: [Array],
-       type_slug: 'sections',
-       created: '2015-07-25T18:50:31.809Z',
-       metadata: [Object] },
-    ],
+       type_slug: 'authors',
+       created: '2017-10-12T13:27:49.663Z',
+       created_at: '2017-10-12T13:27:49.663Z',
+       status: 'published',
+       metadata: [Object] } ],
   limit: 1 }
 ```
 
 Now you are ready to use any of the commands to have full control over your buckets!
 
-## Usage
-
-All cosmic CLI commands are of the format:
-
-`Usage: cosmic [command] [options]`
-
-### Help
+### ❓Help
 
 Run `cosmic -h` for a list of all commands. The list is also included at the bottom of this README.
 
@@ -75,29 +80,29 @@ Below are a few examples of commands. Only a handful of the possible options are
 
 **Creating an Object Type and then an Instance**
 
-Creating a planet object type, and specifying default metafields all instances should have.
+Creating a "Planets" Object Type, and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Radius Metafield.  See the [REST API docs](https://cosmicjs.github.io/rest-api-docs/?javascript#metafields) for all Metafield options.
+```
+$ cosmic add-object-type --slug planets --title Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}]'
+```
 
-`$ cosmic add-object-type --slug planet-type --title 'Planet Objects' --metafields '[{"type":"text", "key": "shape", "value": "Sphere"}]'`
+Making an edit to the Object Type.  This example adds another Metafield to the Planets Object Type.
+```
+$ cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun"}]'
+```
 
-Making an edit to the object type
+Creating an Object:
+```
+$ cosmic add-object add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
+```
 
-`$ cosmic edit-object-type -s planet-type --title 'PlANeT oBject'`
+** 🏞 Uploading Files to a Bucket**
 
-Creating an instance
-
-`$ cosmic add-object add-object --type_slug planet-type --title 'Clypso 6Y'`
-
-**Uploading Image Files to a Bucket**
-
-We upload myLocalImage.png from our computer to Cosmic with the name provided to -t, and into the specified folder.
+We upload any file from our computer to Cosmic with the name provided to -t, and into a specified folder (optional).
 
 Using shorthand params -f for --file and -t for --title
-
-`$ cosmic add-media -f ../myLocalImage.png -t myNameForFileOnCosmic.png --folder product-images`
-
-You can also give a name without an extension, and it will parse the extension for you.
-
-`$ cosmic add-media -f ../myLocalImage.png -t myNameForFileOnCosmic`
+```
+$ cosmic add-media -f ../my-cat.png -t my-cat.png --folder cat-images
+```
 
 ### JSON String Inputs
 
@@ -106,13 +111,13 @@ Some commands allow for two types of input: argument based and json string based
 To add a new barebones object with only a title that is of object type `planet-type`, there are two ways we could go about it, with equivalent results:
 
 ```
-$ cosmic add-object --type_slug 'planet-type' --title 'Clypso 6Y'
+$ cosmic add-object --type_slug planets --title Venus
 ```
 
 or
 
 ```
-$ cosmic add-object --json '{"type_slug": "planet-type", "title": "Clypso 6Y"}'
+$ cosmic add-object --json '{"type_slug": "planets", "title": "Venus"}'
 ```
 
 The json string option is convenient in some use cases, and is included on the following commands:
