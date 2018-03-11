@@ -97,7 +97,7 @@ Creating an Object:
 $ cosmic add-object add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
 ```
 
-** 🏞 Uploading Files to a Bucket**
+🏞 **Uploading Files to a Bucket**
 
 We upload any file from our computer to Cosmic with the name provided to -t, and into a specified folder (optional).
 
