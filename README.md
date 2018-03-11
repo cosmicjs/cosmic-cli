@@ -47,14 +47,14 @@ cosmic [command] [options]
 
 ### Use Bucket
 
-Now that you are logged in, you can connect to Buckets. To connect to the bucket with slug 'simple-react-blog':
+Now that you are logged in, you can connect to any of your Buckets on your account. To connect to the Bucket with slug 'simple-react-blog':
 
 ```bash
 $ cosmic use-bucket -s simple-react-blog --read_key my_read_key --write_key my_write_key
 Now using bucket simple-react-blog
 ```
 
-To test that we connected to the bucket properly:
+To test that we connected to the Bucket properly:
 
 ```bash
 $ cosmic get-objects --limit 1
@@ -74,7 +74,7 @@ Success
   limit: 1 }
 ```
 
-Now you are ready to use any of the commands to have full control over your buckets!
+Now you are ready to use any of the commands to have full control over your Bucket!
 
 
 ### 🗺 Help
