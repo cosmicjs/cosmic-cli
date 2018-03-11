@@ -10,7 +10,7 @@ Install the CLI globally:
 
 To check that it installed properly, run `cosmic` on your command line and you should see a list of commands.
 
-## 🏁Getting Started
+## 🏁 Getting Started
 
 All commands are of the form: `cosmic [command] [command-options]`. Let's walk through the commands you need to
 get started.  For an introduction to the power of the Cosmic CLI run the `begin` command.
@@ -30,7 +30,7 @@ $ cosmic login
 Authenticated
 ```
 
-## Usage
+## 🚀 Usage
 
 All cosmic CLI commands are of the format:
 
@@ -68,7 +68,7 @@ Success
 
 Now you are ready to use any of the commands to have full control over your buckets!
 
-### ❓Help
+### 🗺 Help
 
 Run `cosmic -h` for a list of all commands. The list is also included at the bottom of this README.
 
