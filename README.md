@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/cosmic-cli.svg)](https://www.npmjs.com/package/cosmic-cli)
 
-The official command line tool for [Cosmic JS](https://cosmicjs.com).  It includes all of the awesome features of the [Cosmic JS NPM module](https://github.com/cosmicjs/cosmicjs-node).  Use it to log in to your Cosmic JS account, manage your Buckets and manage data, files and users within your Buckets, all from the comfort of your command line interface.
+This is the official command line tool for [Cosmic JS](https://cosmicjs.com).  It includes all of the awesome features of the [Cosmic JS NPM module](https://github.com/cosmicjs/cosmicjs-node).  Use it to log in to your Cosmic JS account, manage your Buckets and manage data, files and users within your Buckets, all from the comfort of your command line interface.
 
 ## 🛠️ Installation
 
@@ -143,7 +143,9 @@ For a list of the options for a command, use `cosmic [command] -h`
 
 *   begin
 *   login
+*   which-user // outputs the email of the current user 
 *   use-bucket \[options\]
+*   which-bucket // outputs the slug of the current Bucket
 *   add-bucket \[options\]
 *   get-objects \[options\]
 *   get-object \[options\]
