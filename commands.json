@@ -16,7 +16,7 @@
   },
   {
     "cmd": "which-user",
-    "description": "outputs the email of logged in user",
+    "description": "outputs the email of the current user",
     "requiresToken": false,
     "custom": true,
     "customScript": "whichUser",
@@ -24,7 +24,7 @@
   },
   {
     "cmd": "which-bucket",
-    "description": "outputs the bucket-slug",
+    "description": "outputs the slug of the current Bucket",
     "requiresToken": false,
     "custom": true,
     "customScript": "whichBucket",
