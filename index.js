@@ -7,6 +7,7 @@ var bucketConfig = require('./lib/bucket_config')
 var print = require('./lib/output')
 var colors = require('colors')
 var customScripts = require('./non_standard_commands')
+var packageInfo = require('./package.json')
 
 
 var token = auth.getCosmicToken()
@@ -17,7 +18,7 @@ var bucketOpts = bucketConfig.getCosmicBucketOptions()
 var bucket = Cosmic.bucket(bucketOpts)
 
 program
-  .version('0.1.0')
+  .version(packageInfo.version)
 
 commands.forEach(function(command) {
 
