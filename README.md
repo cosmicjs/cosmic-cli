@@ -70,6 +70,7 @@ Success
 
 Now you are ready to use any of the commands to have full control over your buckets!
 
+
 ### 🗺 Help
 
 Run `cosmic -h` for a list of all commands. The list is also included at the bottom of this README.
