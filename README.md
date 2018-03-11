@@ -23,7 +23,7 @@ cosmic begin
 
 ### 🔐 Login
 
-Use your credentials from (cosmicjs.com) to login on the command line. You will only have to do this once.
+Use your credentials (from https://cosmicjs.com) to login on the command line. You will only have to do this once.
 
 ```bash
 $ cosmic login
@@ -34,7 +34,7 @@ Authenticated
 
 ## 🚀 Usage
 
-All cosmic CLI commands are of the format:
+All Cosmic CLI commands are of the format:
 
 ```bash
 cosmic [command] [options]
@@ -43,7 +43,7 @@ cosmic [command] [options]
 
 ### Use Bucket
 
-Now that you are logged in, you can connect to buckets. To connect to the bucket with slug 'wedding-site':
+Now that you are logged in, you can connect to Buckets. To connect to the bucket with slug 'simple-react-blog':
 
 ```bash
 $ cosmic use-bucket -s simple-react-blog --read_key my_read_key --write_key my_write_key
@@ -75,7 +75,7 @@ Now you are ready to use any of the commands to have full control over your buck
 
 ### 🗺 Help
 
-Run `cosmic -h` for a list of all commands. The list is also included at the bottom of this README.
+Run `cosmic -h` for a list of all commands. The list is also included at the [bottom of this README](https://github.com/cosmicjs/cosmic-cli#commands).
 
 Run `cosmic [command] -h` for details on options for a specific command.
 
