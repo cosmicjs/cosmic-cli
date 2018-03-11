@@ -103,7 +103,7 @@ We upload any file from our computer to Cosmic with the name provided to -t, and
 
 Using shorthand params -f for --file and -t for --title
 ```
-$ cosmic add-media -f ../my-cat.png -t my-cat.png --folder cat-images
+$ cosmic add-media -f ./my-cat.png -t my-cat.png --folder cat-images
 ```
 
 ### JSON String Inputs
