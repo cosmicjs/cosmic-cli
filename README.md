@@ -26,7 +26,7 @@ cosmic begin
 Use your credentials (from https://cosmicjs.com) to login on the command line. You will only have to do this once.
 
 ```bash
-cosmic login
+$ cosmic login
   ? Email: starman@gmail.com
   ? Password: [hidden]
 Authenticated
@@ -46,14 +46,14 @@ cosmic [command] [options]
 Now that you are logged in, you can connect to Buckets. To connect to the bucket with slug 'simple-react-blog':
 
 ```bash
-cosmic use-bucket -s simple-react-blog --read_key my_read_key --write_key my_write_key
+$ cosmic use-bucket -s simple-react-blog --read_key my_read_key --write_key my_write_key
 Now using bucket simple-react-blog
 ```
 
 To test that we connected to the bucket properly:
 
 ```bash
-cosmic get-objects --limit 1
+$ cosmic get-objects --limit 1
 Success
 { objects: 
    [ { _id: '59df6dd5fd8d731b2100118d',
@@ -87,17 +87,17 @@ Below are a few examples of commands. Only a handful of the possible options are
 
 Creating a "Planets" Object Type, and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Radius Metafield.  See the [REST API docs](https://cosmicjs.github.io/rest-api-docs/?javascript#metafields) for all Metafield options.
 ```bash
-cosmic add-object-type --slug planets --title Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}]'
+$ cosmic add-object-type --slug planets --title Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}]'
 ```
 
 Making an edit to the Object Type.  This example adds another Metafield to the Planets Object Type.
 ```bash
-cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun"}]'
+$ cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun"}]'
 ```
 
 Creating an Object:
 ```bash
-cosmic add-object add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
+$ cosmic add-object add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
 ```
 
 🏞 **Uploading Files to a Bucket**
@@ -106,7 +106,7 @@ We upload any file from our computer to Cosmic with the name provided to -t, and
 
 Using shorthand params -f for --file and -t for --title
 ```bash
-cosmic add-media -f ./my-cat.png -t my-cat.png --folder cat-images
+$ cosmic add-media -f ./my-cat.png -t my-cat.png --folder cat-images
 ```
 
 ### JSON String Inputs
@@ -116,13 +116,13 @@ Some commands allow for two types of input: argument based and json string based
 To add a new barebones object with only a title that is of object type `planet-type`, there are two ways we could go about it, with equivalent results:
 
 ```bash
-cosmic add-object --type_slug planets --title Venus
+$ cosmic add-object --type_slug planets --title Venus
 ```
 
 or
 
 ```bash
-cosmic add-object --json '{"type_slug": "planets", "title": "Venus"}'
+$ cosmic add-object --json '{"type_slug": "planets", "title": "Venus"}'
 ```
 
 The json string option is convenient in some use cases, and is included on the following commands:
