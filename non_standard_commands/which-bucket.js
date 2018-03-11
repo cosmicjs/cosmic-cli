@@ -4,9 +4,9 @@ var print = require('../lib/output')
 function handler() {
   var bucket = bucketConfig.getCosmicBucketOptions()
   if (!bucket) {
-    print.error('No active bucket found')
+    print.error('No active Bucket found')
   }
-  print.cosmic('Active bucket: ' + bucket.slug)
+  print.cosmic(bucket.slug)
 }
 
 module.exports = handler
