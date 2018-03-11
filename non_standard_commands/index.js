@@ -4,6 +4,8 @@
 */
 
 module.exports.login = require('./login')
+module.exports.whichUser = require('./which-user')
 module.exports.useBucket = require('./use-bucket')
+module.exports.whichBucket = require('./which-bucket')
 module.exports.addMedia = require('./add-media')
 module.exports.begin = require('./begin')

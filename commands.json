@@ -15,6 +15,22 @@
     "options": [ ]
   },
   {
+    "cmd": "which-user",
+    "description": "outputs the email of logged in user",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "whichUser",
+    "options": [ ]
+  },
+  {
+    "cmd": "which-bucket",
+    "description": "outputs the bucket-slug",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "whichBucket",
+    "options": [ ]
+  },
+  {
     "cmd": "use-bucket",
     "description": "",
     "requiresToken": false,
