@@ -89,17 +89,17 @@ Below are a few examples of commands. Only a handful of the possible options are
 
 **Creating an Object Type and then an Object**
 
-Creating a "Planets" Object Type, and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Radius Metafield.  See the [REST API docs](https://cosmicjs.github.io/rest-api-docs/?javascript#metafields) for all Metafield options.
+Creating a "Planets" Object Type and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Metafield titled "Radius".  See the [REST API docs](https://cosmicjs.github.io/rest-api-docs/?javascript#metafields) for all Metafield options.
 ```bash
 $ cosmic add-object-type --slug planets --title Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}]'
 ```
 
-Making an edit to the Object Type.  This example adds another Metafield to the Planets Object Type.
+Making an edit to the Object Type.  This example adds another Metafield to the "Planets" Object Type.
 ```bash
 $ cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun"}]'
 ```
 
-Creating an Object:
+Creating an Object in the "Planets" Object Type:
 ```bash
 $ cosmic add-object add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
 ```
