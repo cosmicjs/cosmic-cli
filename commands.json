@@ -72,6 +72,59 @@
         "param": "title",
         "flags": "-t, --title [value]",
         "description": "bucket title"
+      },
+      {
+        "param": "cluster",
+        "flags": "-c, --cluster [value]",
+        "description": "Add this Bucket to a Cluster. ID of existing Cluster"
+      },
+      {
+        "param": "object_types",
+        "flags": "--object_types [value]",
+        "description": "[JSON String Array] Populate your Bucket with Object Types.",
+        "isJsonString": true
+      },
+      {
+        "param": "objects",
+        "flags": "--objects [value]",
+        "description": "[JSON String Array] Populate your Bucket with Objects.",
+        "isJsonString": true
+      },
+      {
+        "param": "media",
+        "flags": "--media [value]",
+        "description": "[JSON String Array] Populate your Bucket with Media.",
+        "isJsonString": true
+      },
+      {
+        "param": "media",
+        "flags": "--media [value]",
+        "description": "[JSON String Array] Populate your Bucket with Media.",
+        "isJsonString": true
+      },
+      {
+        "param": "media",
+        "flags": "--media [value]",
+        "description": "[JSON String Array] Populate your Bucket with Media.",
+        "isJsonString": true
+      },
+      {
+        "param": "media_folders",
+        "flags": "--media_folders [value]",
+        "description": "[JSON String Array] Populate your Bucket with Media Folders.",
+        "isJsonString": true
+      },
+      {
+        "param": "webhooks",
+        "flags": "--webhooks [value]",
+        "description": "[JSON String Array] Populate your Bucket with Webhooks.",
+        "isJsonString": true
+      },
+      {
+        "param": "extensions",
+        "flags": "--extensions [value]",
+        "description": "[JSON String Array] Populate your Bucket with Extensions.",
+        "isJsonString": true
       }
     ]
   },
