@@ -87,7 +87,7 @@ Run `cosmic [command] -h` for details on options for a specific command.
 
 Below are a few examples of commands. Only a handful of the possible options are shown for the commands.
 
-**Creating an Object Type and then an Instance**
+**Creating an Object Type and then an Object**
 
 Creating a "Planets" Object Type, and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Radius Metafield.  See the [REST API docs](https://cosmicjs.github.io/rest-api-docs/?javascript#metafields) for all Metafield options.
 ```bash
