@@ -97,18 +97,6 @@
         "isJsonString": true
       },
       {
-        "param": "media",
-        "flags": "--media [value]",
-        "description": "[JSON String Array] Populate your Bucket with Media.",
-        "isJsonString": true
-      },
-      {
-        "param": "media",
-        "flags": "--media [value]",
-        "description": "[JSON String Array] Populate your Bucket with Media.",
-        "isJsonString": true
-      },
-      {
         "param": "media_folders",
         "flags": "--media_folders [value]",
         "description": "[JSON String Array] Populate your Bucket with Media Folders.",
