@@ -101,7 +101,7 @@ $ cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title
 
 Creating an Object in the "Planets" Object Type:
 ```bash
-$ cosmic add-object add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"},{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
+$ cosmic add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"},{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
 ```
 
 🏞 **Uploading Files to a Bucket**
