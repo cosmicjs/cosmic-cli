@@ -18,8 +18,7 @@ To check that it installed properly, run `cosmic` on your command line and you s
 
 ## 🏁 Getting Started
 
-All commands are of the form: `cosmic [command] [command-options]`. Let's walk through the commands you need to
-get started.  For an introduction to the Cosmic CLI run the `begin` command.
+Let's walk through the commands you need to get started.  For an introduction to the Cosmic CLI run the `begin` command.
 ```bash
 cosmic begin
 ```
