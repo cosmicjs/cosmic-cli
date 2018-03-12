@@ -96,7 +96,7 @@ $ cosmic add-object-type --slug planets --title Planets --metafields '[{"title":
 
 Making an edit to the Object Type.  This example adds another Metafield to the "Planets" Object Type.
 ```bash
-$ cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}{"title": "Distance from Sun","type":"text", "key": "distance_from_sun"}]'
+$ cosmic edit-object-type -s planets --metafields Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"},{"title": "Distance from Sun","type":"text", "key": "distance_from_sun"}]'
 ```
 
 Creating an Object in the "Planets" Object Type:
