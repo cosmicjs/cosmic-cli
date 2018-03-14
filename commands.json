@@ -159,7 +159,7 @@
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "bucket slug"
+        "description": "Object slug"
       },
       {
         "param": "locale",
@@ -216,17 +216,17 @@
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "bucket slug"
+        "description": "Object Type slug"
       },
       {
         "param": "title",
         "flags": "-t, --title [value]",
-        "description": "plural title of your object type"
+        "description": "plural title of your Object Type"
       },
       {
         "param": "singular",
         "flags": "--singular [value]",
-        "description": "singular title of your object type"
+        "description": "singular title of your Object Type"
       },
       {
         "param": "metafields",
@@ -237,7 +237,7 @@
       {
         "param": "json",
         "flags": "-j, --json [value]",
-        "description": "Json string with specifications for the new object type. Ex: '[{\"slug\":\"my-slug\", \"title\": \"My awesome title\", \"metafields\": {...}}]'",
+        "description": "JSON string with specifications for the new Object Type. Ex: '[{\"slug\":\"my-slug\", \"title\": \"My awesome title\", \"metafields\": {...}}]'",
         "isJsonString": true,
         "isWrapperParameter": true
       }
@@ -255,17 +255,17 @@
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "object slug"
+        "description": "Object Type slug"
       },
       {
         "param": "title",
         "flags": "-t, --title [value]",
-        "description": "your object title"
+        "description": "your Object Type title"
       },
       {
         "param": "singular",
         "flags": "--singular [value]",
-        "description": "singular title of your object type"
+        "description": "singular title of your Object Type"
       },
       {
         "param": "metafields",
@@ -276,7 +276,7 @@
       {
         "param": "json",
         "flags": "-j, --json [value]",
-        "description": "Json string with specifications for the edits to the object type. Ex: '[{\"slug\":\"my-slug\", \"metafields\": {...}}]'",
+        "description": "JSON string with specifications for the edits to the Object Type. Ex: '[{\"slug\":\"my-slug\", \"metafields\": {...}}]'",
         "isJsonString": true,
         "isWrapperParameter": true
       }
@@ -294,7 +294,7 @@
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "object slug to delete"
+        "description": "Object Type slug to delete"
       }
     ]
   },
@@ -310,22 +310,22 @@
       {
         "param": "type_slug",
         "flags": "-o, --type_slug [value]",
-        "description": "add object to object type"
+        "description": "Object Type slug"
       },
       {
         "param": "title",
         "flags": "-t, --title [value]",
-        "description": "your object title"
+        "description": "your Object title"
       },
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "object slug"
+        "description": "Object slug"
       },
       {
         "param": "content",
         "flags": "-c, --content [value]",
-        "description": "add content to your object"
+        "description": "add content to your Object"
       },
       {
         "param": "status",
@@ -335,7 +335,7 @@
       {
         "param": "locale",
         "flags": "--locale [value]",
-        "description": "add localization to the object"
+        "description": "add localization to the Object"
       },
       {
         "param": "metafields",
@@ -346,7 +346,7 @@
       {
         "param": "json",
         "flags": "-j, --json [value]",
-        "description": "Json string with specifications for the new object. Ex: '[{\"type_slug\":\"my-obj-type\", \"slug\":\"my-slug\", \"title\": \"My new obj\"}]'",
+        "description": "JSON string with specifications for the new Object. Ex: '[{\"type_slug\":\"my-obj-type\", \"slug\":\"my-slug\", \"title\": \"My new obj\"}]'",
         "isJsonString": true,
         "isWrapperParameter": true
       }
@@ -364,22 +364,22 @@
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "object slug"
+        "description": "Object slug"
       },
       {
         "param": "type_slug",
         "flags": "-o, --type_slug [value]",
-        "description": "add object to object type"
+        "description": "add Object to Object Type"
       },
       {
         "param": "title",
         "flags": "-t, --title [value]",
-        "description": "your object title"
+        "description": "your Object title"
       },
       {
         "param": "content",
         "flags": "-c, --content [value]",
-        "description": "add content to your object"
+        "description": "add content to your Object"
       },
       {
         "param": "status",
@@ -389,7 +389,7 @@
       {
         "param": "locale",
         "flags": "--locale [value]",
-        "description": "add localization to the object"
+        "description": "add localization to the Object"
       },
       {
         "param": "metafields",
@@ -400,7 +400,7 @@
       {
         "param": "json",
         "flags": "-j, --json [value]",
-        "description": "Json string with specifications for the object edits. Ex: '[{\"slug\":\"my-slug\", \"title\": \"Altered Title\"}]'",
+        "description": "JSON string with specifications for the Object edits. Ex: '[{\"slug\":\"my-slug\", \"title\": \"Altered Title\"}]'",
         "isJsonString": true,
         "isWrapperParameter": true
       }
@@ -418,7 +418,7 @@
       {
         "param": "slug",
         "flags": "-s, --slug [value]",
-        "description": "object slug to delete"
+        "description": "Object slug to delete"
       }
     ]
   },
