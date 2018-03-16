@@ -32,11 +32,17 @@
   },
   {
     "cmd": "get-buckets",
-    "description": "shows available Bucket slugs available to user",
+    "description": "shows available buckets available to user",
     "requiresToken": false,
     "custom": true,
     "customScript": "getBuckets",
-    "options": [ ]
+    "options": [
+      {
+        "param": "showFull",
+        "flags": "-f, --show_full",
+        "description": "show full bucket objects, not just slugs"
+      }
+    ]
   },
   {
     "cmd": "use-bucket",
@@ -121,6 +127,22 @@
         "flags": "--extensions [value]",
         "description": "[JSON String Array] Populate your Bucket with Extensions.",
         "isJsonString": true
+      }
+    ]
+  },
+  {
+    "cmd": "delete-bucket",
+    "description": "",
+    "requiresToken": true,
+    "cosmicMethod": {
+      "useBucket": false,
+      "method": "deleteBucket"
+    },
+    "options": [
+      {
+        "param": "id",
+        "flags": "--id [value]",
+        "description": "The Bucket id found as '_id'"
       }
     ]
   },
