@@ -134,6 +134,15 @@
     },
     "options": [
       {
+        "param": "type_slug",
+        "flags": "-s, --type_slug [value]",
+        "description": "[optional] limit fetch to a specific type slug",
+        "switchToCommandIfPresent": {
+          "method": "getObjectsByType",
+          "useBucket": true
+        }
+      },
+      {
         "param": "limit",
         "flags": "-l, --limit [value]",
         "description": "[optional] limit on number of objects to return"
@@ -190,26 +199,6 @@
       "method": "getObjectTypes"
     },
     "options": [
-      {
-        "param": "limit",
-        "flags": "-l, --limit [value]",
-        "description": "[optional] limit on number of objects to return"
-      },
-      {
-        "param": "skip",
-        "flags": "-s, --skip [value]",
-        "description": "[optional] # objects to skip"
-      },
-      {
-        "param": "locale",
-        "flags": "--locale [value]",
-        "description": "[optional] specify locale filter"
-      },
-      {
-        "param": "status",
-        "flags": "--status [value]",
-        "description": "[optional] specify locale filter"
-      }
     ]
   },
   {
