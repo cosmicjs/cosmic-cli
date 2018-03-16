@@ -31,6 +31,14 @@
     "options": [ ]
   },
   {
+    "cmd": "get-buckets",
+    "description": "shows available Bucket slugs available to user",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "getBuckets",
+    "options": [ ]
+  },
+  {
     "cmd": "use-bucket",
     "description": "",
     "requiresToken": false,

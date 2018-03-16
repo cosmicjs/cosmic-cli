@@ -57,7 +57,7 @@ function runCustomScript(command, invokedCmd) {
     process.exit(1)
   }
 
-  customScripts[command.customScript](invokedCmd, bucket)
+  customScripts[command.customScript](invokedCmd, bucket, token)
 }
 
 function runCosmicCommand(command, invokedCmd) {
