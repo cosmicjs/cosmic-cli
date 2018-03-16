@@ -49,6 +49,11 @@ program.parse(process.argv)
 
 if (!process.argv.slice(2).length) {
   program.outputHelp()
+} else {
+  var receivedCmd = program.args[0] || {}
+  if (!receivedCmd._name) {
+    print.error('Unrecognized command')
+  }
 }
 
 function runCustomScript(command, invokedCmd) {
