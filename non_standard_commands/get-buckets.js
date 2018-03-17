@@ -17,7 +17,7 @@ function handler(invokedCmd, bucket, token) {
       print.error('Issue fetching buckets.')
       process.exit(1)
     }
-    if (invokedCmd.show_full || invokedCmd.json) {
+    if (invokedCmd.json) {
       print.cosmic('Your Buckets (json format):')
       console.log(body.buckets)
     } else {

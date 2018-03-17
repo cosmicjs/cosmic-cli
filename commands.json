@@ -44,6 +44,22 @@
       }
     ]
   },
+    {
+    "cmd": "get-bucket",
+    "description": "get current bucket object",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getBucket"
+    },
+    "options": [
+      {
+        "param": "hide_metafields",
+        "flags": "-m, --hide_metafields",
+        "description": "hide the metafields on the returned bucket"
+      }
+    ]
+  },
   {
     "cmd": "use-bucket",
     "description": "",
