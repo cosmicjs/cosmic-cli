@@ -12,7 +12,7 @@ function handler(invokedCmd) {
       print.error(err.error)
       process.exit(1)
     } else {
-      print.success('Now using bucket ' + options.slug)
+      print.success('Now using Bucket ' + options.slug)
       process.exit()
     }
   })
