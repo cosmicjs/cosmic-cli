@@ -18,16 +18,17 @@ function handler(invokedCmd, bucket, token) {
       process.exit(1)
     }
 
-    if (invokedCmd.show_full) {
-      print.cosmic('Buckets:')
-      console.log(body.buckets)
-    } else {
+    console.log(body)
+    if (invokedCmd.quick_look) {
       print.cosmic('Slugs:')
 
       var buckets = body.buckets || []
       buckets.forEach(function(bucket) {
         console.log('- ' + bucket.slug)
       })
+    } else {
+      print.cosmic('Buckets:')
+      console.log(body.buckets)
     }
   })
 }

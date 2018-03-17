@@ -38,9 +38,25 @@
     "customScript": "getBuckets",
     "options": [
       {
-        "param": "showFull",
-        "flags": "-f, --show_full",
-        "description": "show full bucket objects, not just slugs"
+        "param": "quick_look",
+        "flags": "-q, --quick_look",
+        "description": "just slugs of buckets, not full objects"
+      }
+    ]
+  },
+  {
+    "cmd": "get-bucket",
+    "description": "get current bucket object",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getBucket"
+    },
+    "options": [
+      {
+        "param": "hide_metafields",
+        "flags": "-m, --hide_metafields",
+        "description": "hide the metafields on the returned bucket"
       }
     ]
   },
