@@ -23,13 +23,15 @@ function handler(invokedCmd, bucket, token) {
     } else {
       print.cosmic('Your Buckets (title and slug):')
       console.log('')
-
       var buckets = body.buckets || []
       buckets.forEach(function(bucket) {
         console.log(bucket.title)
         print.cosmic(bucket.slug)
         console.log('')
       })
+    } else {
+      print.cosmic('Buckets:')
+      console.log(body.buckets)
     }
   })
 }

@@ -38,7 +38,7 @@
     "customScript": "getBuckets",
     "options": [
       {
-        "param": "showFull",
+        "param": "json",
         "flags": "-j, --json",
         "description": "show Bucket info in JSON format"
       }
