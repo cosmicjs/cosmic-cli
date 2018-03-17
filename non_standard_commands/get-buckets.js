@@ -29,9 +29,6 @@ function handler(invokedCmd, bucket, token) {
         print.cosmic(bucket.slug)
         console.log('')
       })
-    } else {
-      print.cosmic('Buckets:')
-      console.log(body.buckets)
     }
   })
 }
