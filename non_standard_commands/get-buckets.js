@@ -18,12 +18,10 @@ function handler(invokedCmd, bucket, token) {
       process.exit(1)
     }
 
-    print.cosmic('Slugs:')
+    print.success('Success')
 
     var buckets = body.buckets || []
-    buckets.forEach(function(bucket) {
-      console.log('- ' + bucket.slug)
-    })
+    console.log(buckets)
   })
 }
 
