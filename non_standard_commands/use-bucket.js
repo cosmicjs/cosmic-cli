@@ -3,7 +3,7 @@ var print = require('../lib/output')
 
 function handler(invokedCmd) {
   var bucket = {
-    slug: invokedCmd.slug,
+    slug: invokedCmd.slug || invokedCmd,
     read_key: invokedCmd.read_key,
     write_key: invokedCmd.write_key,
   }

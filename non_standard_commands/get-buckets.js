@@ -17,11 +17,20 @@ function handler(invokedCmd, bucket, token) {
       print.error('Issue fetching buckets.')
       process.exit(1)
     }
+    if (invokedCmd.show_full || invokedCmd.json) {
+      print.cosmic('Your Buckets (json format):')
+      console.log(body.buckets)
+    } else {
+      print.cosmic('Your Buckets (title and slug):')
+      console.log('')
 
-    print.success('Success')
-
-    var buckets = body.buckets || []
-    console.log(buckets)
+      var buckets = body.buckets || []
+      buckets.forEach(function(bucket) {
+        console.log(bucket.title)
+        print.cosmic(bucket.slug)
+        console.log('')
+      })
+    }
   })
 }
 

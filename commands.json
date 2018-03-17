@@ -32,11 +32,17 @@
   },
   {
     "cmd": "get-buckets",
-    "description": "shows available Bucket slugs available to user",
+    "description": "shows available Buckets available to user",
     "requiresToken": false,
     "custom": true,
     "customScript": "getBuckets",
-    "options": [ ]
+    "options": [
+      {
+        "param": "showFull",
+        "flags": "-j, --json",
+        "description": "show Bucket info in JSON format"
+      }
+    ]
   },
   {
     "cmd": "use-bucket",
@@ -125,6 +131,22 @@
     ]
   },
   {
+    "cmd": "delete-bucket",
+    "description": "",
+    "requiresToken": true,
+    "cosmicMethod": {
+      "useBucket": false,
+      "method": "deleteBucket"
+    },
+    "options": [
+      {
+        "param": "id",
+        "flags": "--id [value]",
+        "description": "The Bucket id found as '_id'"
+      }
+    ]
+  },
+  {
     "cmd": "get-objects",
     "description": "",
     "requiresToken": false,
@@ -133,6 +155,15 @@
       "method": "getObjects"
     },
     "options": [
+      {
+        "param": "type_slug",
+        "flags": "-s, --type_slug [value]",
+        "description": "[optional] limit fetch to a specific type slug",
+        "switchToCommandIfPresent": {
+          "method": "getObjectsByType",
+          "useBucket": true
+        }
+      },
       {
         "param": "limit",
         "flags": "-l, --limit [value]",
@@ -190,26 +221,6 @@
       "method": "getObjectTypes"
     },
     "options": [
-      {
-        "param": "limit",
-        "flags": "-l, --limit [value]",
-        "description": "[optional] limit on number of objects to return"
-      },
-      {
-        "param": "skip",
-        "flags": "-s, --skip [value]",
-        "description": "[optional] # objects to skip"
-      },
-      {
-        "param": "locale",
-        "flags": "--locale [value]",
-        "description": "[optional] specify locale filter"
-      },
-      {
-        "param": "status",
-        "flags": "--status [value]",
-        "description": "[optional] specify locale filter"
-      }
     ]
   },
   {
