@@ -3,7 +3,10 @@ var fs = require('fs')
 var upath = require('upath')
 
 
-function handler(invokedCmd, bucket) {
+function handler(options) {
+  var invokedCmd = options.invokedCmd
+  var bucket = options.bucket
+  
   var buffer = fs.readFileSync(invokedCmd.file)
 
   var fileExt = upath.extname(invokedCmd.file)

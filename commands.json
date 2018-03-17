@@ -32,7 +32,7 @@
   },
   {
     "cmd": "get-buckets",
-    "description": "shows available Buckets available to user",
+    "description": "shows Buckets available to user",
     "requiresToken": false,
     "custom": true,
     "customScript": "getBuckets",
@@ -44,7 +44,7 @@
       }
     ]
   },
-    {
+  {
     "cmd": "get-bucket",
     "description": "get current bucket object",
     "requiresToken": false,
@@ -61,7 +61,7 @@
     ]
   },
   {
-    "cmd": "use-bucket",
+    "cmd": "use-bucket [slug]",
     "description": "",
     "requiresToken": false,
     "custom": true,

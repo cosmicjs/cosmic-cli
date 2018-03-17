@@ -30,19 +30,43 @@ commands.forEach(function(command) {
     buildUp.option(option.flags, option.description)
   })
 
-  buildUp
-    .action(function(invokedCmd) {
-      if (command.requiresToken && !token) {
-        print.error('Authentication required! Please type `cosmic login` to authenticate.')
-        process.exit(1)
-      }
+  var regExp = /\[([^\]]+)\]/
+  var argumentParamName = regExp.exec(command.cmd)
+  argumentParamName = argumentParamName ? argumentParamName[1] : null
 
-      if (command.custom) {
-        runCustomScript(command, invokedCmd)
-      } else {
-        runCosmicCommand(command, invokedCmd)
-      }
-    })
+  if (argumentParamName) {
+    buildUp
+      .action(handleArg)
+  } else {
+    buildUp
+      .action(handleNoArg)
+  }
+
+  function handleNoArg(invokedCmd) {
+    handleAction(null, invokedCmd)
+  }
+
+  function handleArg(arg, invokedCmd) {
+    var argObj = {
+      argumentParamName: argumentParamName,
+      arg: arg
+    }
+    console.log(argObj)
+    handleAction(argObj, invokedCmd)
+  }
+
+  function handleAction(argObj, invokedCmd){
+    if (command.requiresToken && !token) {
+      print.error('Authentication required! Please type `cosmic login` to authenticate.')
+      process.exit(1)
+    }
+
+    if (command.custom) {
+      runCustomScript(command, invokedCmd, argObj)
+    } else {
+      runCosmicCommand(command, invokedCmd, argObj)
+    }
+  }
 })
 
 program.parse(process.argv)
@@ -51,17 +75,24 @@ if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
 
-function runCustomScript(command, invokedCmd) {
+function runCustomScript(command, invokedCmd, argObj) {
   if (!customScripts[command.customScript]) {
     print.error('Error with custom command ' + command.cmd + '. Please report this at ' + colors.blue('https://github.com/cosmicjs/cosmic-cli/issues/'))
     process.exit(1)
   }
 
-  customScripts[command.customScript](invokedCmd, bucket, token)
+  customScripts[command.customScript]({
+    invokedCmd: invokedCmd,
+    bucket: bucket,
+    token: token,
+    argObj: argObj,
+  })
 }
 
-function runCosmicCommand(command, invokedCmd) {
-  var params = parseCosmicParameters(command, invokedCmd)
+function runCosmicCommand(command, invokedCmd, argObj) {
+  console.log(argObj)
+  var params = parseCosmicParameters(command, invokedCmd, argObj)
+  console.log(params)
 
   var cosmicMethod = command.cosmicMethod || {}
 
@@ -84,7 +115,7 @@ function runCosmicCommand(command, invokedCmd) {
   })
 }
 
-function parseCosmicParameters(command, invokedCmd) {
+function parseCosmicParameters(command, invokedCmd, argObj) {
   var params = {}
   command.options.forEach(function(option) {
     var paramValue = invokedCmd[option.param]
@@ -109,6 +140,10 @@ function parseCosmicParameters(command, invokedCmd) {
       params[option.param] = paramValue
     }
   })
+
+  if (argObj && argObj.arg) {
+    params[argObj.argumentParamName] = argObj.arg
+  }
 
   return params
 }

@@ -1,9 +1,14 @@
 var bucketConfig = require('../lib/bucket_config')
 var print = require('../lib/output')
 
-function handler(invokedCmd) {
+function handler(options) {
+  var invokedCmd = options.invokedCmd
+  var argObj = options.argObj || {}
+
+  var slugArg = argObj.argumentParamName === 'slug' ? argObj.arg : null
+
   var bucket = {
-    slug: invokedCmd.slug || invokedCmd,
+    slug: slugArg || invokedCmd.slug || invokedCmd,
     read_key: invokedCmd.read_key,
     write_key: invokedCmd.write_key,
   }
