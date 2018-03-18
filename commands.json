@@ -46,7 +46,7 @@
   },
   {
     "cmd": "install-app",
-    "description": "installs app to your machine",
+    "description": "installs an app to your bucket and downloads the repo to your machine",
     "requiresToken": false,
     "custom": true,
     "customScript": "installApp",
