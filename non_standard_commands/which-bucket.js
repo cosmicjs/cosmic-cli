@@ -6,7 +6,8 @@ function handler() {
   if (!bucket) {
     print.error('No active Bucket found')
   }
-  print.cosmic(bucket.slug)
+  print.cosmic('title:  ' + bucket.title)
+  print.cosmic('slug:   ' + bucket.slug)
 }
 
 module.exports = handler
