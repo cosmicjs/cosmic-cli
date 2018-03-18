@@ -44,7 +44,23 @@
       }
     ]
   },
-    {
+  {
+    "cmd": "install-app",
+    "description": "installs app to your machine",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "installApp",
+    "options": [ ]
+  },
+  {
+    "cmd": "start-app",
+    "description": "starts a downloaded app on your machine",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "startApp",
+    "options": [ ]
+  },
+  {
     "cmd": "get-bucket",
     "description": "get current bucket object",
     "requiresToken": false,
