@@ -49,6 +49,11 @@ program.parse(process.argv)
 
 if (!process.argv.slice(2).length) {
   program.outputHelp()
+} else {
+  var receivedCmd = program.args[0] || {}
+  if (!receivedCmd._name) {
+    print.error('Unrecognized command')
+  }
 }
 
 function runCustomScript(command, invokedCmd) {
@@ -63,7 +68,15 @@ function runCustomScript(command, invokedCmd) {
 function runCosmicCommand(command, invokedCmd) {
   var params = parseCosmicParameters(command, invokedCmd)
 
-  var cosmicMethod = command.cosmicMethod || {}
+  // some commands have flags that, if present, change the cosmic method we should use
+  var overrideCommand
+  command.options.forEach(function(option) {
+    if (option.switchToCommandIfPresent && params[option.param]) {
+      overrideCommand = option.switchToCommandIfPresent
+    }
+  })
+
+  var cosmicMethod = overrideCommand || command.cosmicMethod || {}
 
   var scope = cosmicMethod.useBucket ? bucket : Cosmic
 
