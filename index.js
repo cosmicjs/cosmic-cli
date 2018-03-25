@@ -95,9 +95,7 @@ function runCustomScript(command, invokedCmd, argObj) {
 }
 
 function runCosmicCommand(command, invokedCmd, argObj) {
-  console.log(argObj)
   var params = parseCosmicParameters(command, invokedCmd, argObj)
-  console.log(params)
 
   // some commands have flags that, if present, change the cosmic method we should use
   var overrideCommand
