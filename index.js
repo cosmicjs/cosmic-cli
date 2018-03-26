@@ -51,7 +51,6 @@ commands.forEach(function(command) {
       argumentParamName: argumentParamName,
       arg: arg
     }
-    console.log(argObj)
     handleAction(argObj, invokedCmd)
   }
 
@@ -74,7 +73,7 @@ program.parse(process.argv)
 if (!process.argv.slice(2).length) {
   program.outputHelp()
 } else {
-  var receivedCmd = program.args[0] || {}
+  var receivedCmd = program.args[program.args.length - 1] || {}
   if (!receivedCmd._name) {
     print.error('Unrecognized command')
   }
