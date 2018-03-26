@@ -172,8 +172,9 @@
     },
     "options": [
       {
-        "param": "type_slug",
-        "flags": "-s, --type_slug [value]",
+        "param": "type",
+        "cosmicParamName": "type_slug",
+        "flags": "-s, --type [value]",
         "description": "[optional] limit fetch to a specific type slug",
         "switchToCommandIfPresent": {
           "method": "getObjectsByType",

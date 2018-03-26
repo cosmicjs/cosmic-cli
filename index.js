@@ -99,7 +99,8 @@ function runCosmicCommand(command, invokedCmd, argObj) {
   // some commands have flags that, if present, change the cosmic method we should use
   var overrideCommand
   command.options.forEach(function(option) {
-    if (option.switchToCommandIfPresent && params[option.param]) {
+    var cosmicParamName = option.cosmicParamName || option.param
+    if (option.switchToCommandIfPresent && params[cosmicParamName]) {
       overrideCommand = option.switchToCommandIfPresent
     }
   })
@@ -146,14 +147,17 @@ function parseCosmicParameters(command, invokedCmd, argObj) {
       }
     }
 
+    var cosmicParamName = option.cosmicParamName || option.param
+
     if (addToParams) { // add the option directly to params unless a special case occurred that flipped addToParams to false
-      params[option.param] = paramValue
+      params[cosmicParamName] = paramValue
     }
   })
 
   if (argObj && argObj.arg) {
     params[argObj.argumentParamName] = argObj.arg
   }
+
 
   return params
 }
