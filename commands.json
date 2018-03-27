@@ -45,7 +45,6 @@
     ]
   },
   {
-<<<<<<< HEAD
     "cmd": "install-app",
     "description": "installs an app to your bucket and downloads the repo to your machine",
     "requiresToken": false,
@@ -62,8 +61,6 @@
     "options": [ ]
   },
   {
-=======
->>>>>>> dda281943f4ed54f9d9113bd8d67abf99d4c90b1
     "cmd": "get-bucket",
     "description": "get current bucket object",
     "requiresToken": false,
