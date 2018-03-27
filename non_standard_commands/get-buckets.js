@@ -1,7 +1,9 @@
 var print = require('../lib/output')
 var request = require('request')
 
-function handler(invokedCmd, bucket, token) {
+function handler(options) {
+  var invokedCmd = options.invokedCmd
+  var token = options.token
   request.get({
     url: 'https://api.cosmicjs.com/v1/buckets',
     headers: {

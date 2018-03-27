@@ -32,7 +32,7 @@
   },
   {
     "cmd": "get-buckets",
-    "description": "shows available Buckets available to user",
+    "description": "shows Buckets available to user",
     "requiresToken": false,
     "custom": true,
     "customScript": "getBuckets",
@@ -45,6 +45,7 @@
     ]
   },
   {
+<<<<<<< HEAD
     "cmd": "install-app",
     "description": "installs an app to your bucket and downloads the repo to your machine",
     "requiresToken": false,
@@ -61,6 +62,8 @@
     "options": [ ]
   },
   {
+=======
+>>>>>>> dda281943f4ed54f9d9113bd8d67abf99d4c90b1
     "cmd": "get-bucket",
     "description": "get current bucket object",
     "requiresToken": false,
@@ -77,7 +80,7 @@
     ]
   },
   {
-    "cmd": "use-bucket",
+    "cmd": "use-bucket [slug]",
     "description": "",
     "requiresToken": false,
     "custom": true,
@@ -188,8 +191,9 @@
     },
     "options": [
       {
-        "param": "type_slug",
-        "flags": "-s, --type_slug [value]",
+        "param": "type",
+        "cosmicParamName": "type_slug",
+        "flags": "-t, --type [value]",
         "description": "[optional] limit fetch to a specific type slug",
         "switchToCommandIfPresent": {
           "method": "getObjectsByType",
