@@ -53,6 +53,14 @@
     "options": [ ]
   },
   {
+    "cmd": "view-app",
+    "description": "Opens browser window with demo link",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "viewApp",
+    "options": [ ]
+  },
+  {
     "cmd": "start-app",
     "description": "starts a downloaded app on your machine",
     "requiresToken": false,

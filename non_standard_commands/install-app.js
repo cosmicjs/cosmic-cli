@@ -6,7 +6,7 @@ var inquirer = require('inquirer')
 var bucketConfig = require('../lib/bucket_config')
 var path = require('path')
 
-function handler(options, bucket, token) {
+function handler(options) {
   var invokedCmd = options.invokedCmd
   var appBucket = Cosmic().bucket({
     slug: 'cosmicapps'
