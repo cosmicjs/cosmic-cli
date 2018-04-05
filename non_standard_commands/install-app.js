@@ -4,6 +4,7 @@ var Cosmic = require('cosmicjs')
 var exec = require('child_process').exec
 var inquirer = require('inquirer')
 var bucketConfig = require('../lib/bucket_config')
+var path = require('path')
 
 function handler(options, bucket, token) {
   var invokedCmd = options.invokedCmd
@@ -29,12 +30,15 @@ function handler(options, bucket, token) {
       }
 
       var repo_url = data.object.metadata.repo
-      print.cosmic('Cloning repo: ' + repo_url)
-      exec('git clone ' + repo_url + ' ./' + invokedCmd, function(error, stdout, stderr) {
+      print.cosmic('Installing...')
+      exec('git clone ' + repo_url + ' ' + invokedCmd, function(error, stdout, stderr) {
         if (error !== null) {
           console.log('exec error: ' + error)
         } else {
-          print.success('Success! Now you can run the start command to run this app:')
+          print.success('Success!')
+          var appPath = path.join(process.cwd(), invokedCmd)
+          print.cosmic('App code located at ' + appPath)
+          print.success('To start this app run this command')
           print.cosmic('cosmic start-app ' + invokedCmd)
         }
       })
