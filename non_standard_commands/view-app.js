@@ -7,25 +7,14 @@ function handler(options) {
   var appBucket = Cosmic().bucket({
     slug: 'cosmicapps'
   })
-  appBucket.getObject({
-    slug: invokedCmd
-  }).then(function(data) {
-    var object = data.object
-    var metadata = object.metadata || {}
-    var demoLink = metadata.demo_link
-    if (!demoLink) {
-      print.cosmic('No demo for this app found. Please visit ' + metadata.repo + ' to explore more.' )
-    }
+  var demoLink = 'https://cosmicjs.com/apps/' + invokedCmd + '/demo'
+  if (!demoLink) {
+    print.cosmic('No demo for this app found. Please visit ' + metadata.repo + ' to explore more.' )
+  }
 
-    // open in user's default browser
-    opn(demoLink)
-    process.exit()
-
-  }).catch(function(err) {
-    print.error('Error')
-    console.log(err)
-    process.exit(1)
-  })
+  // open in user's default browser
+  opn(demoLink)
+  process.exit()
 }
 
 module.exports = handler
