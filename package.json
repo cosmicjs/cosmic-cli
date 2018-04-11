@@ -15,6 +15,7 @@
     "inquirer": "^3.1.0",
     "opn": "^5.3.0",
     "request": "^2.81.0",
+    "striptags": "^3.1.1",
     "upath": "^1.0.4"
   },
   "devDependencies": {
