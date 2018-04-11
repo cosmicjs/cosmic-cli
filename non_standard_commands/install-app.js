@@ -8,6 +8,7 @@ var path = require('path')
 
 function handler(options) {
   var invokedCmd = options.invokedCmd
+  var token = options.token
   var appBucket = Cosmic().bucket({
     slug: 'cosmicapps'
   })
@@ -29,18 +30,42 @@ function handler(options) {
         return process.exit(1)
       }
 
-      var repo_url = data.object.metadata.repo
       print.cosmic('Installing...')
-      exec('git clone ' + repo_url + ' ' + invokedCmd, function(error, stdout, stderr) {
-        if (error !== null) {
-          console.log('exec error: ' + error)
-        } else {
-          print.success('Success!')
-          var appPath = path.join(process.cwd(), invokedCmd)
-          print.cosmic('App code located at ' + appPath)
-          print.success('To start this app run this command')
-          print.cosmic('cosmic start-app ' + invokedCmd)
-        }
+      request.get({
+        url: data.object.metadata.bucket.url,
+        json: true
+      }, function(err, httpResponse, body) {
+
+        options.bucket.getBucket()
+          .then(function(bucketToOverwrite) {
+            request.post({
+              url: 'https://api.cosmicjs.com/v1/buckets/' + bucketToOverwrite.bucket._id + '/import',
+              json: body,
+              headers: {
+                'Authorization': token
+              }
+            }, function(err, httpResponse, body) {
+
+              if (err || !body.bucket) {
+                print.error('Error Installing:')
+                console.log(body)
+                process.exit(1)
+              }
+
+              var repo_url = data.object.metadata.repo
+              exec('git clone ' + repo_url + ' ' + invokedCmd, function(error, stdout, stderr) {
+                if (error !== null) {
+                  console.log('exec error: ' + error)
+                } else {
+                  print.success('Success!')
+                  var appPath = path.join(process.cwd(), invokedCmd)
+                  print.cosmic('App code located at ' + appPath)
+                  print.success('To start this app run this command')
+                  print.cosmic('cosmic start-app ' + invokedCmd)
+                }
+              })
+            })
+          })
       })
     })
   }).catch(function(err) {
