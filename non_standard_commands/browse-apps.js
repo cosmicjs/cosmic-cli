@@ -23,7 +23,9 @@ function handler(options) {
         print.cosmic(object.title)
         console.log(striptags(object.content))
         console.log('Built with: ' + languageString)
-        console.log('Install: cosmic install-app ' + object.slug)
+        console.log('Install:')
+        console.log('cosmic install-app ' + object.slug)
+        console.log('')
       }
     })
   }).catch(function(err) {
