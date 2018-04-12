@@ -5,6 +5,7 @@ var async = require('async')
 var exec = require('child_process').exec
 var bucketConfig = require('../lib/bucket_config')
 var bucket_opts = bucketConfig.getCosmicBucketOptions()
+var opn = require('opn')
 
 function handler(options) {
   var invokedCmd = options.invokedCmd
