@@ -53,6 +53,20 @@
     "options": [ ]
   },
   {
+    "cmd": "deploy-app",
+    "description": "deploys an app to the Cosmic App Server",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "deployApp",
+    "options": [
+      {
+        "param": "branch",
+        "flags": "-b, --branch",
+        "description": "indicate branch to use to deploy App"
+      }
+    ]
+  },
+  {
     "cmd": "view-app",
     "description": "Opens browser window with demo link",
     "requiresToken": false,
