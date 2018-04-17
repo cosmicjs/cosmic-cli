@@ -31,6 +31,14 @@
     "options": [ ]
   },
   {
+    "cmd": "which-app",
+    "description": "outputs the slug of the current app",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "whichApp",
+    "options": [ ]
+  },
+  {
     "cmd": "get-buckets",
     "description": "shows Buckets available to user",
     "requiresToken": false,

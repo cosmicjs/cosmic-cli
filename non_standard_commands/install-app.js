@@ -4,6 +4,7 @@ var Cosmic = require('cosmicjs')
 var exec = require('child_process').exec
 var inquirer = require('inquirer')
 var bucketConfig = require('../lib/bucket_config')
+var appConfig = require('../lib/app_config')
 var path = require('path')
 
 function handler(options) {
@@ -35,7 +36,7 @@ function handler(options) {
         url: data.object.metadata.bucket.url,
         json: true
       }, function(err, httpResponse, body) {
-
+        console.log('here?')
         options.bucket.getBucket()
           .then(function(bucketToOverwrite) {
             request.post({
@@ -46,6 +47,7 @@ function handler(options) {
               }
             }, function(err, httpResponse, body) {
 
+              console.log('hello?')
               if (err || !body.bucket) {
                 print.error('Error Installing:')
                 console.log(body)
@@ -57,6 +59,8 @@ function handler(options) {
                 if (error !== null) {
                   console.log('exec error: ' + error)
                 } else {
+                  console.log('settign')
+                  appConfig.set({slug: invokedCmd, title: data.object.title})
                   print.success('Success!')
                   var appPath = path.join(process.cwd(), invokedCmd)
                   print.cosmic('App code located at ' + appPath)
@@ -65,6 +69,10 @@ function handler(options) {
                 }
               })
             })
+          })
+          .catch(err => {
+            console.log(err)
+            process.exit()
           })
       })
     })
