@@ -36,7 +36,6 @@ function handler(options) {
         url: data.object.metadata.bucket.url,
         json: true
       }, function(err, httpResponse, body) {
-        console.log('here?')
         options.bucket.getBucket()
           .then(function(bucketToOverwrite) {
             request.post({
@@ -47,7 +46,6 @@ function handler(options) {
               }
             }, function(err, httpResponse, body) {
 
-              console.log('hello?')
               if (err || !body.bucket) {
                 print.error('Error Installing:')
                 console.log(body)
@@ -59,13 +57,12 @@ function handler(options) {
                 if (error !== null) {
                   console.log('exec error: ' + error)
                 } else {
-                  console.log('settign')
                   appConfig.set({slug: invokedCmd, title: data.object.title})
                   print.success('Success!')
                   var appPath = path.join(process.cwd(), invokedCmd)
                   print.cosmic('App code located at ' + appPath)
                   print.success('To start this app run this command')
-                  print.cosmic('cosmic start-app ' + invokedCmd)
+                  print.cosmic('cosmic start-app')
                 }
               })
             })

@@ -32,7 +32,7 @@ function handler() {
       console.log(bucket_opts.slug)
       var start_command = 'cd ./' + appSlug + '; COSMIC_BUCKET=' + bucket_opts.slug + ' PORT=' + PORT + ' npm start;'
       console.log(start_command)
-      print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug)
+      print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug + '.  Open your browser to http://localhost:3000')
       var child = exec(start_command, function(error, stdout, stderr) {
         if (error !== null) {
           console.log('exec error: ' + error)
