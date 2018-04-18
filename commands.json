@@ -31,6 +31,14 @@
     "options": [ ]
   },
   {
+    "cmd": "which-app",
+    "description": "outputs the slug of the current app",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "whichApp",
+    "options": [ ]
+  },
+  {
     "cmd": "get-buckets",
     "description": "shows Buckets available to user",
     "requiresToken": false,
@@ -43,6 +51,58 @@
         "description": "show Bucket info in JSON format"
       }
     ]
+  },
+  {
+    "cmd": "install-app",
+    "description": "installs an app to your bucket and downloads the repo to your machine",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "installApp",
+    "options": [ ]
+  },
+  {
+    "cmd": "deploy-app",
+    "description": "deploys an app to the Cosmic App Server",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "deployApp",
+    "options": [
+      {
+        "param": "branch",
+        "flags": "-b, --branch",
+        "description": "indicate branch to use to deploy App"
+      }
+    ]
+  },
+  {
+    "cmd": "view-app",
+    "description": "Opens browser window with demo link",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "viewApp",
+    "options": [ ]
+  },
+  {
+    "cmd": "browse-apps",
+    "description": "search for apps or see all",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "browseApps",
+    "options": [
+      {
+        "param": "q",
+        "flags": "-q, --q [value]",
+        "description": "query"
+      }
+    ]
+  },
+  {
+    "cmd": "start-app",
+    "description": "starts a downloaded app on your machine",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "startApp",
+    "options": [ ]
   },
   {
     "cmd": "get-bucket",
