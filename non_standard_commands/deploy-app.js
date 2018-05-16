@@ -38,8 +38,9 @@ function handler(options) {
 
       print.cosmic('Deploying...')
       var params = {
-        repo_url: data.object.metadata.repo,
-        repo_branch: invokedCmd.branch || 'master'
+        repo_url: invokedCmd.repo_url || data.object.metadata.repo,
+        repo_branch: invokedCmd.branch || 'master',
+        force_deploy: invokedCmd.force_deploy
       }
       options.bucket.getBucket()
         .then(function(bucketToDeploy) {

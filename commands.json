@@ -69,8 +69,18 @@
     "options": [
       {
         "param": "branch",
-        "flags": "-b, --branch",
+        "flags": "-b, --branch [value]",
         "description": "indicate branch to use to deploy App"
+      },
+      {
+        "param": "repo_url",
+        "flags": "-r, --repo_url [value]",
+        "description": "[optional] override the repo used to deploy App"
+      },
+      {
+        "param": "force_deploy",
+        "flags": "-f, --force_deploy",
+        "description": "[optional] override the repo used to deploy App"
       }
     ]
   },
