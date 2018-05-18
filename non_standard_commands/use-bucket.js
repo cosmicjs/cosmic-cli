@@ -12,15 +12,15 @@ function handler(options) {
     read_key: invokedCmd.read_key,
     write_key: invokedCmd.write_key,
   }
-  bucketConfig.setBucket(bucket, function(err, options) {
-    if (err) {
-      print.error(err.error)
-      process.exit(1)
-    } else {
+  bucketConfig.setBucket(bucket)
+    .then(function(options) {
       print.success('Now using Bucket ' + options.slug)
       process.exit()
-    }
-  })
+    })
+    .catch(function(err) {
+      print.error(err.error)
+      process.exit(1)
+    })
 }
 
 module.exports = handler
