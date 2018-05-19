@@ -158,10 +158,8 @@
     "cmd": "add-bucket",
     "description": "",
     "requiresToken": true,
-    "cosmicMethod": {
-      "useBucket": false,
-      "method": "addBucket"
-    },
+    "custom": true,
+    "customScript": "addBucket",
     "options": [
       {
         "param": "slug",
@@ -172,6 +170,16 @@
         "param": "title",
         "flags": "-t, --title [value]",
         "description": "bucket title"
+      },
+      {
+        "param": "read_key",
+        "flags": "-k, --read_key [value]",
+        "description": "read key"
+      },
+      {
+        "param": "write_key",
+        "flags": "-w, --write_key [value]",
+        "description": "write key"
       },
       {
         "param": "cluster",
