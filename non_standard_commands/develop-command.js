@@ -15,7 +15,7 @@ function handler() {
       console.log(bucket_opts.slug)
       var start_command = 'COSMIC_BUCKET=' + bucket_opts.slug + ' PORT=' + PORT + ' NODE_ENV=development nodemon;'
       console.log(start_command)
-      print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug + '.  Open your browser to http://localhost:3000')
+      print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug + '.  Open your browser to http://localhost:' + PORT)
       var child = exec(start_command, function(error, stdout, stderr) {
         if (error !== null) {
           console.log('exec error: ' + error)
