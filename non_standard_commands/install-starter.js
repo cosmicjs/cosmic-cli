@@ -12,12 +12,15 @@ function handler(options) {
   var invokedCmd = options.invokedCmd
   var argObj = options.argObj || {}
   var nameArg = argObj.argumentParamName === 'name' ? argObj.arg : null
-  var repo_url = starter_repos[nameArg]
+  if (starter_repos[nameArg])
+    repo_url = starter_repos[nameArg]
+  else
+    repo_url = nameArg
   var bucketOpts = bucketConfig.getCosmicBucketOptions()
   print.cosmic('Installing...')
   exec('git clone ' + repo_url, function(error) {
     if (error !== null) {
-      console.log('exec error: ' + error)
+      console.log('' + error)
     } else {
       print.success('Success!')
       var appPath = path.join(process.cwd(), nameArg)
@@ -29,12 +32,18 @@ function handler(options) {
         introQuestions = confirmCurrentOrNewBucket(bucketOpts)
       }
       introQuestions.then(function(bucketOpts) {
-        exec('cd ./' + nameArg + '; npm i; COSMIC_BUCKET=' + bucketOpts.slug + ' COSMIC_WRITE_KEY=' + bucketOpts.write_key + ' npm run import', function(error) {
-          print.success('To start this app run these commands')
+        exec('cd ./' + nameArg + '; npm install; COSMIC_BUCKET=' + bucketOpts.slug + ' COSMIC_WRITE_KEY=' + bucketOpts.write_key + ' npm run import', function(error) {
+          print.success('Success! The starter content has been imported to your Bucket: ' + bucketOpts.slug)
+          print.normal('')
+          print.normal('Begin by typing the following commands:')
+          print.normal('')
           print.cosmic('cd node-starter')
-          print.cosmic('Start production: cosmic start')
-          print.cosmic('or')
-          print.cosmic('Start development: cosmic develop')
+          print.cosmic('cosmic start')
+          print.normal('   Starts the app in production.')
+          print.cosmic('cosmic develop')
+          print.normal('   Starts the app in development.')
+        }).stdout.on('data', function (data) {
+          console.log(data.toString());
         })
       }).catch(function(err) {
         console.log(err)
