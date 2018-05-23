@@ -61,6 +61,36 @@
     "options": [ ]
   },
   {
+    "cmd": "init [name]",
+    "description": "installs a starter app to your machine",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "installStarter",
+    "options": [
+      {
+        "param": "folder",
+        "flags": "-f, --folder [value]",
+        "description": "indicate folder to install starter"
+      }
+    ]
+  },
+  {
+    "cmd": "develop",
+    "description": "starts a starter app on your machine in development mode",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "developCommand",
+    "options": [ ]
+  },
+  {
+    "cmd": "start",
+    "description": "starts a starter app on your machine",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "startCommand",
+    "options": [ ]
+  },
+  {
     "cmd": "deploy-app",
     "description": "deploys an app to the Cosmic App Server",
     "requiresToken": false,
