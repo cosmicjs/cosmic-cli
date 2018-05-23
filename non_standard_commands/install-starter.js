@@ -17,6 +17,12 @@ function handler(options) {
   else
     repo_url = nameArg
   var bucketOpts = bucketConfig.getCosmicBucketOptions()
+  if (!options.token) {
+    print.normal('Error: User not set.')
+    print.normal('Login to your Cosmic JS account by running the following command, or go to htps://cosmicjs.com to create a new account.')
+    print.cosmic('cosmic login')
+    return
+  }
   print.cosmic('Installing...')
   exec('git clone ' + repo_url, function(error) {
     if (error !== null) {
