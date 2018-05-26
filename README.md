@@ -116,7 +116,7 @@ $ cosmic add-media -f ./my-cat.png -t my-cat.png --folder cat-images
 
 Some commands allow for two types of input: argument based and json string based. This is best illustrated with an example:
 
-To add a new barebones object with only a title that is of object type `planet-type`, there are two ways we could go about it, with equivalent results:
+To add a new barebones Object with only a title that is of Object Type `planets`, there are two ways we could go about it, with equivalent results:
 
 ```bash
 $ cosmic add-object --type_slug planets --title Venus
