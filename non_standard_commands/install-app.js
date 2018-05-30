@@ -119,10 +119,10 @@ function handleNoBucketSet() {
     {
       type: 'list',
       name: 'list',
-      message: 'You do not have a bucket set to deploy to. Please cancel and set one with the `use-bucket` command, or create a new bucket. Would you like to:',
+      message: 'You do not have a bucket set to deploy to. Please cancel and set one with the `use-bucket` command, or create a new Bucket. Would you like to:',
       choices: [
-        {name: 'Create new bucket', value: 'new'},
-        {name: 'Cancel and connect to existing bucket', value: 'cancel'}
+        {name: 'Create new Bucket', value: 'new'},
+        {name: 'Cancel and connect to existing Bucket', value: 'cancel'}
       ]
     }
   ]

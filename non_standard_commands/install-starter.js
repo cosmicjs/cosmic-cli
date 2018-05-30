@@ -5,7 +5,9 @@ var inquirer = require('inquirer')
 var bucketConfig = require('../lib/bucket_config')
 var createNewBucketInquiry = require('../lib/create_bucket')
 var starter_repos = {
-  'node-starter': 'https://github.com/cosmicjs/node-starter'
+  'node-starter': 'https://github.com/cosmicjs/node-starter',
+  'react-starter': 'https://github.com/cosmicjs/react-starter',
+  'vue-starter': 'https://github.com/cosmicjs/vue-starter'
 }
 
 function handler(options) {
@@ -16,6 +18,9 @@ function handler(options) {
     repo_url = starter_repos[nameArg]
   else
     repo_url = nameArg
+  var folder
+  if (invokedCmd.folder)
+    folder = invokedCmd.folder
   var bucketOpts = bucketConfig.getCosmicBucketOptions()
   if (!options.token) {
     print.normal('Error: User not set.')
@@ -23,27 +28,28 @@ function handler(options) {
     print.cosmic('cosmic login')
     return
   }
-  print.cosmic('Installing...')
-  exec('git clone ' + repo_url, function(error) {
-    if (error !== null) {
-      console.log('' + error)
-    } else {
-      print.success('Success!')
-      var appPath = path.join(process.cwd(), nameArg)
-      print.cosmic('Starter app code located at ' + appPath)
-      var introQuestions
-      if (!bucketOpts || !bucketOpts.slug) {
-        introQuestions = handleNoBucketSet()
+  var introQuestions
+  if (!bucketOpts || !bucketOpts.slug) {
+    introQuestions = handleNoBucketSet()
+  } else {
+    introQuestions = confirmCurrentOrNewBucket(bucketOpts)
+  }
+  introQuestions.then(function(bucketOpts) {
+    print.cosmic('Downloading...')
+    exec('git clone ' + repo_url + (folder ? ' ' + folder : ''), function(error) {
+      if (error !== null) {
+        console.log('' + error)
       } else {
-        introQuestions = confirmCurrentOrNewBucket(bucketOpts)
-      }
-      introQuestions.then(function(bucketOpts) {
-        exec('cd ./' + nameArg + '; npm install; COSMIC_BUCKET=' + bucketOpts.slug + ' COSMIC_WRITE_KEY=' + bucketOpts.write_key + ' npm run import', function(error) {
+        print.success('Success!')
+        var appPath = path.join(process.cwd(), (folder ? folder : nameArg))
+        print.cosmic('Starter app code located at ' + appPath)
+        print.cosmic('Installing...')
+        exec('cd ./' + (folder ? folder : nameArg) + '; npm install; COSMIC_BUCKET=' + bucketOpts.slug + ' COSMIC_WRITE_KEY=' + bucketOpts.write_key + ' npm run import', function(error) {
           print.success('Success! The starter content has been imported to your Bucket: ' + bucketOpts.slug)
           print.normal('')
           print.normal('Begin by typing the following commands:')
           print.normal('')
-          print.cosmic('cd node-starter')
+          print.cosmic('cd ' + (folder ? folder : nameArg))
           print.cosmic('cosmic start')
           print.normal('   Starts the app in production.')
           print.cosmic('cosmic develop')
@@ -51,10 +57,10 @@ function handler(options) {
         }).stdout.on('data', function (data) {
           console.log(data.toString());
         })
-      }).catch(function(err) {
-        console.log(err)
-      })
-    }
+      }
+    })
+  }).catch(function(err) {
+    console.log(err)
   })
 }
 
@@ -92,10 +98,10 @@ function handleNoBucketSet() {
     {
       type: 'list',
       name: 'list',
-      message: 'You do not have a Bucket set to deploy to. Please cancel and set one with the `use-bucket` command, or create a new bucket. Would you like to:',
+      message: 'You do not have a Bucket set. Please cancel and set one with the `use-bucket` command, or create a new Bucket. Would you like to:',
       choices: [
-        {name: 'Create new bucket', value: 'new'},
-        {name: 'Cancel and connect to existing bucket', value: 'cancel'}
+        {name: 'Create new Bucket', value: 'new'},
+        {name: 'Cancel and connect to existing Bucket', value: 'cancel'}
       ]
     }
   ]
@@ -104,7 +110,9 @@ function handleNoBucketSet() {
     case 'new':
       return createNewBucketInquiry()
     case 'cancel':
-      print.error('Install Cancelled')
+      print.normal('Select your Bucket using the `use-bucket` command.  You can list your available Buckets using the `get-buckets` command.')
+      print.cosmic('cosmic get-buckets')
+      print.cosmic('cosmic use-bucket <bucket-slug>')
       return process.exit(1)
     default:
       print.error('Unknown Option. Install cancelled')
