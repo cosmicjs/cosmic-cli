@@ -35,6 +35,15 @@ function handler(options) {
     introQuestions = confirmCurrentOrNewBucket(bucketOpts)
   }
   introQuestions.then(function(bucketOpts) {
+    if (!repo_url && !folder) {
+      console.log('')
+      print.error('Error. You must indicate a starter, or add a git repo (--repo)')
+      console.log('')
+      console.log('For example:')
+      console.log('cosmic init node-starter')
+      console.log('')
+      return
+    }
     print.cosmic('Downloading...')
     exec('git clone ' + repo_url + (folder ? ' ' + folder : ''), function(error) {
       if (error !== null) {
