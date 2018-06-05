@@ -37,7 +37,7 @@ function handler(options) {
   introQuestions.then(function(bucketOpts) {
     if (!repo_url && !folder) {
       console.log('')
-      print.error('Error. You must indicate a starter, or add a git repo (--repo)')
+      print.error('Error. You must indicate a starter.')
       console.log('')
       console.log('For example:')
       console.log('cosmic init node-starter')
