@@ -7,7 +7,8 @@ var createNewBucketInquiry = require('../lib/create_bucket')
 var starter_repos = {
   'node-starter': 'https://github.com/cosmicjs/node-starter',
   'react-starter': 'https://github.com/cosmicjs/react-starter',
-  'vue-starter': 'https://github.com/cosmicjs/vue-starter'
+  'vue-starter': 'https://github.com/cosmicjs/vue-starter',
+  'gatsby-starter': 'https://github.com/cosmicjs/gatsby-starter'
 }
 
 function handler(options) {
