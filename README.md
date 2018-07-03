@@ -58,7 +58,7 @@ To test that we connected to the Bucket properly:
 ```bash
 $ cosmic get-objects --limit 1
 Success
-{ objects: 
+{ objects:
    [ { _id: '59df6dd5fd8d731b2100118d',
        bucket: '59df6dcbfd8d731b21001188',
        slug: 'jane-doe',
@@ -116,7 +116,7 @@ $ cosmic add-media -f ./my-cat.png -t my-cat.png --folder cat-images
 
 Some commands allow for two types of input: argument based and json string based. This is best illustrated with an example:
 
-To add a new barebones object with only a title that is of object type `planet-type`, there are two ways we could go about it, with equivalent results:
+To add a new barebones Object with only a title that is of Object Type `planets`, there are two ways we could go about it, with equivalent results:
 
 ```bash
 $ cosmic add-object --type_slug planets --title Venus
@@ -140,23 +140,33 @@ The json string option is convenient in some use cases, and is included on the f
 
 For a list of the options for a command, use `cosmic [command] -h`
 
-*   begin
-*   login
-*   which-user // outputs the email of the current user 
-*   use-bucket \[options\]
-*   which-bucket // outputs the slug of the current Bucket
-*   add-bucket \[options\]
-*   get-objects \[options\]
-*   get-object \[options\]
-*   get-object-types \[options\]
-*   add-object-type \[options\]
-*   edit-object-type \[options\]
-*   delete-object-type \[options\]
-*   add-object \[options\]
-*   edit-object \[options\]
-*   delete-object \[options\]
-*   add-media \[options\]
-*   get-media \[options\]
-*   delete-media \[options\]
-*   add-webhook \[options\]
-*   delete-webhook \[options\]
+*   begin                          `Guide to Getting Started`
+*   login                        
+*   which-user                     `outputs the email of the current user`
+*   which-bucket                   `outputs the slug of the current Bucket`
+*   which-app                      `outputs the slug of the current app`
+*   get-buckets [options]          `shows Buckets available to user`
+*   install-app                    `installs an app to your bucket and downloads the repo to your machine`
+*   deploy-app [options]           `deploys an app to the Cosmic App Server`
+*   view-app                       `Opens browser window with demo link`
+*   browse-apps [options]          `search for apps or see all`
+*   start-app                      `starts a downloaded app on your machine`
+*   get-bucket [options]           `get current bucket object`
+*   use-bucket [options] [slug]  
+*   add-bucket [options]         
+*   delete-bucket [options]      
+*   get-objects [options]        
+*   get-object [options]         
+*   get-object-types             
+*   add-object-type [options]    
+*   edit-object-type [options]   
+*   delete-object-type [options]
+*   add-object [options]         
+*   edit-object [options]        
+*   delete-object [options]      
+*   add-media [options]          
+*   get-media [options]          
+*   delete-media [options]       
+*   add-webhook [options]        
+*   delete-webhook [options]     
+*   add-user [options]           

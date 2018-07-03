@@ -90,6 +90,7 @@ function runCustomScript(command, invokedCmd, argObj) {
     bucket: bucket,
     token: token,
     argObj: argObj,
+    Cosmic: Cosmic,
   })
 }
 

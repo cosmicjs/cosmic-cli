@@ -6,6 +6,7 @@ var inquirer = require('inquirer')
 var bucketConfig = require('../lib/bucket_config')
 var appConfig = require('../lib/app_config')
 var path = require('path')
+var createNewBucketInquiry = require('../lib/create_bucket')
 
 function handler(options) {
   var invokedCmd = options.invokedCmd
@@ -18,25 +19,23 @@ function handler(options) {
   }).then(function(data) {
     var bucketOpts = bucketConfig.getCosmicBucketOptions()
 
-    var questions = [
-      {
-        type: 'confirm',
-        name: 'confirm',
-        message: 'DANGER! Are you sure you want to overwrite all data and files in the Bucket: ' + bucketOpts.slug + '?',
-      },
-    ]
-    inquirer.prompt(questions).then(function(answers) {
-      if (!answers.confirm) {
-        print.error('Install Cancelled')
-        return process.exit(1)
-      }
+    var introQuestions
+    if (!bucketOpts || !bucketOpts.slug) {
+      introQuestions = handleNoBucketSet()
+    } else {
+      introQuestions = confirmCurrentOrNewBucket(bucketOpts)
+    }
 
+    introQuestions.then(function(bucketOpts) {
       print.cosmic('Installing...')
+      var bucket = Cosmic({token: token}).bucket(bucketOpts)
+
+
       request.get({
         url: data.object.metadata.bucket.url,
         json: true
       }, function(err, httpResponse, body) {
-        options.bucket.getBucket()
+        bucket.getBucket()
           .then(function(bucketToOverwrite) {
             request.post({
               url: 'https://api.cosmicjs.com/v1/buckets/' + bucketToOverwrite.bucket._id + '/import',
@@ -53,7 +52,7 @@ function handler(options) {
               }
 
               var repo_url = data.object.metadata.repo
-              exec('git clone ' + repo_url + ' ' + invokedCmd, function(error, stdout, stderr) {
+              exec('git clone ' + repo_url + ' ' + invokedCmd, function(error) {
                 if (error !== null) {
                   console.log('exec error: ' + error)
                 } else {
@@ -67,16 +66,95 @@ function handler(options) {
               })
             })
           })
-          .catch(err => {
+          .catch(function(err) {
             console.log(err)
             process.exit()
           })
       })
     })
+      .catch(function(err) {
+        print.error('Error')
+        console.log(err)
+        process.exit(1)
+      })
   }).catch(function(err) {
     print.error('Error')
     console.log(err)
     process.exit(1)
+  })
+}
+
+function confirmCurrentOrNewBucket(bucketOpts) {
+  var questions = [
+    {
+      type: 'list',
+      name: 'list',
+      message: 'You are connected to ' + bucketOpts.slug + ' and will overwrite its data. Would you like to keep using this bucket or create a new one?',
+      choices: [
+        {name: 'Use ' + bucketOpts.slug, value: 'old'},
+        {name: 'Create new bucket', value: 'new'},
+        {name: 'Cancel', value: 'cancel'}
+      ]
+    },
+  ]
+  return inquirer.prompt(questions)
+    .then(function(answers) {
+      switch (answers.list) {
+      case 'old':
+        return confirmOverwrite(bucketOpts)
+      case 'new':
+        return createNewBucketInquiry()
+      case 'cancel':
+        print.error('Install Cancelled')
+        return process.exit(1)
+      default:
+        print.error('Unknown Option. Install cancelled')
+        return process.exit(1)
+      }
+    })
+}
+
+function handleNoBucketSet() {
+  var questions = [
+    {
+      type: 'list',
+      name: 'list',
+      message: 'You do not have a bucket set to deploy to. Please cancel and set one with the `use-bucket` command, or create a new Bucket. Would you like to:',
+      choices: [
+        {name: 'Create new Bucket', value: 'new'},
+        {name: 'Cancel and connect to existing Bucket', value: 'cancel'}
+      ]
+    }
+  ]
+  return inquirer.prompt(questions).then(function(answers) {
+    switch (answers.list) {
+    case 'new':
+      return createNewBucketInquiry()
+    case 'cancel':
+      print.error('Install Cancelled')
+      return process.exit(1)
+    default:
+      print.error('Unknown Option. Install cancelled')
+      return process.exit(1)
+    }
+  })
+}
+
+function confirmOverwrite(bucketOpts) {
+  var questions = [
+    {
+      type: 'confirm',
+      name: 'confirm',
+      message: 'DANGER! Are you sure you want to overwrite all data and files in the Bucket: ' + bucketOpts.slug + '?',
+    },
+  ]
+  return inquirer.prompt(questions).then(function(answers) {
+    if (!answers.confirm) {
+      print.error('Install Cancelled')
+      process.exit(1)
+      return
+    }
+    return bucketOpts
   })
 }
 
