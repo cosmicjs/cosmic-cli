@@ -8,7 +8,8 @@ var starter_repos = {
   'node-starter': 'https://github.com/cosmicjs/node-starter',
   'react-starter': 'https://github.com/cosmicjs/react-starter',
   'vue-starter': 'https://github.com/cosmicjs/vue-starter',
-  'gatsby-starter': 'https://github.com/cosmicjs/gatsby-starter'
+  'gatsby-starter': 'https://github.com/cosmicjs/gatsby-starter',
+  'serverless-starter': 'https://github.com/cosmicjs/serverless-starter'
 }
 
 function handler(options) {
