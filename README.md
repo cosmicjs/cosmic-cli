@@ -26,7 +26,7 @@ cosmic begin
 
 ### 🔐 Login
 
-Use your credentials (from https://cosmicjs.com) to login on the command line. You will only have to do this once.
+Use your credentials (from https://cosmicjs.com) to login on the command line. You will only have to do this once. If you used GitHub to sign up, you can also login via authentication token which you can find at https://cosmicjs.com/account/authentication
 
 ```bash
 $ cosmic login
