@@ -9,6 +9,7 @@ var starter_repos = {
   'react-starter': 'https://github.com/cosmicjs/react-starter',
   'vue-starter': 'https://github.com/cosmicjs/vue-starter',
   'gatsby-starter': 'https://github.com/cosmicjs/gatsby-starter',
+  'gatsby-starter-localization': 'https://github.com/cosmicjs/gatsby-starter-localization',
   'serverless-starter': 'https://github.com/cosmicjs/serverless-starter'
 }
 
