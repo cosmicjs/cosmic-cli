@@ -30,7 +30,7 @@ function handler() {
     function() {
       var PORT = process.env.PORT || 3000
       console.log(bucket_opts.slug)
-      var start_command = 'cd ./' + appSlug + '; cross-env COSMIC_BUCKET=' + bucket_opts.slug + ' PORT=' + PORT + ' npm start;'
+      var start_command = 'cd ./' + appSlug + '; COSMIC_BUCKET=' + bucket_opts.slug + ' PORT=' + PORT + ' npm start;'
       console.log(start_command)
       print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug + '.  Open your browser to http://localhost:3000')
       var child = exec(start_command, function(error, stdout, stderr) {
