@@ -4,22 +4,11 @@ var path = require('path')
 var inquirer = require('inquirer')
 var bucketConfig = require('../lib/bucket_config')
 var createNewBucketInquiry = require('../lib/create_bucket')
-var starter_repos = {
-  'node-starter': 'https://github.com/cosmicjs/node-starter',
-  'react-starter': 'https://github.com/cosmicjs/react-starter',
-  'vue-starter': 'https://github.com/cosmicjs/vue-starter',
-  'gatsby-starter': 'https://github.com/cosmicjs/gatsby-starter',
-  'serverless-starter': 'https://github.com/cosmicjs/serverless-starter'
-}
-
 function handler(options) {
   var invokedCmd = options.invokedCmd
   var argObj = options.argObj || {}
   var nameArg = argObj.argumentParamName === 'name' ? argObj.arg : null
-  if (starter_repos[nameArg])
-    repo_url = starter_repos[nameArg]
-  else
-    repo_url = nameArg
+  var repo_url = 'https://github.com/cosmicjs/' + nameArg
   var folder
   if (invokedCmd.folder)
     folder = invokedCmd.folder
