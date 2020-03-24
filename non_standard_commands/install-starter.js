@@ -45,7 +45,6 @@ function handler(options) {
         print.cosmic('Starter app code located at ' + appPath)
         print.cosmic('Installing...')
         const command = 'cd ./' + (folder ? folder : nameArg) + '; npm install; COSMIC_BUCKET=' + bucketOpts.slug + ' COSMIC_READ_KEY=' + bucketOpts.read_key + ' COSMIC_WRITE_KEY=' + bucketOpts.write_key + ' npm run import'
-        console.log(bucketOpts, command)
         exec(command, function(error) {
           print.success('Success! The starter content has been imported to your Bucket: ' + bucketOpts.slug)
           print.normal('')
