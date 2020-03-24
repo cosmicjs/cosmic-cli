@@ -13,7 +13,7 @@ function handler() {
     function() {
       var PORT = process.env.PORT || 3000
       console.log(bucket_opts.slug)
-      var start_command = 'COSMIC_BUCKET=' + bucket_opts.slug + ' PORT=' + PORT + ' NODE_ENV=development npm run develop;'
+      var start_command = 'COSMIC_BUCKET=' + bucket_opts.slug + ' COSMIC_READ_KEY=' + bucket_opts.read_key + ' PORT=' + PORT + ' NODE_ENV=development npm run develop;'
       console.log(start_command)
       print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug + '.  Open your browser to http://localhost:' + PORT)
       var child = exec(start_command, function(error, stdout, stderr) {
