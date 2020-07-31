@@ -8,7 +8,7 @@
 	<a href="https://www.npmjs.com/package/cosmic-cli"><img src="https://badge.fury.io/js/cosmic-cli.svg" alt="npm version"></a>
 </p>
 
-This is the official command line tool for [Cosmic](https://cosmicjs.com).  Use it to log in to your Cosmic account, manage Buckets, data, files and users within your Buckets, all from the comfort of your command line interface.
+This is the official command line tool for [Cosmic](https://www.cosmicjs.com).  Use it to log in to your Cosmic account, manage Buckets, data, files and users within your Buckets, all from the comfort of your command line interface.
 
 ## 🛠️ Installation
 
@@ -30,7 +30,7 @@ cosmic begin
 
 ### 🔐 Login
 
-Use your credentials (from https://cosmicjs.com) to login on the command line. You will only have to do this once. If you used GitHub to sign up, you can also login via authentication token which you can find at https://cosmicjs.com/account/authentication
+Use your credentials (from https://www.cosmicjs.com) to login on the command line. You will only have to do this once. If you used GitHub to sign up, you can also login via authentication token which you can find at https://www.cosmicjs.com/account/authentication
 
 ```bash
 $ cosmic login
@@ -92,7 +92,7 @@ Below are a few examples of commands. Only a handful of the possible options are
 
 **Creating an Object Type and then an Object**
 
-Creating a "Planets" Object Type and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Metafield titled "Radius".  See the [REST API docs](https://cosmicjs.github.io/rest-api-docs/?javascript#metafields) for all Metafield options.
+Creating a "Planets" Object Type and specifying default Metafields all Objects in this Object Type should have.  For this example all planets will now include the Metafield titled "Radius".  See the [REST API docs](https://docs.cosmicjs.com/rest-api/metafields.html) for all Metafield options.
 ```bash
 $ cosmic add-object-type --slug planets --title Planets --metafields '[{"title": "Radius","type":"text", "key": "radius"}]'
 ```
