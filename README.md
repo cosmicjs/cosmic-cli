@@ -1,10 +1,15 @@
 <p align="center">
-  <a href="https://cosmicjs.com"><img src="https://cosmic-s3.imgix.net/e18557d0-f3fc-11e7-b948-afa0abf2fc70-cosmicjs-logo.png?w=900" alt="Cosmic JS" width="400"></a>
+  <a href="https://www.cosmicjs.com"><img src="https://cdn.cosmicjs.com/3cf62ab0-8e13-11ea-9b8f-cd0254a8c979-cosmic-dark.svg" alt="Cosmic" width="400"></a>
+</p>
+<p align="center">
+  📖 <a href="https://docs.cosmicjs.com">View Docs</a>
+</p>
+<p align="center">
+	<a href="https://www.npmjs.com/package/cosmic-cli"><img src="https://badge.fury.io/js/cosmic-cli.svg" alt="npm version"></a>
+	<a href="https://circleci.com/gh/cosmicjs/cosmicjs-node"><img src="https://circleci.com/gh/cosmicjs/cosmicjs-node.svg?style=shield" alt="CircleCI"></a>
 </p>
 
-[![npm version](https://badge.fury.io/js/cosmic-cli.svg)](https://www.npmjs.com/package/cosmic-cli)
-
-This is the official command line tool for [Cosmic JS](https://cosmicjs.com).  Use it to log in to your Cosmic JS account, manage Buckets, data, files and users within your Buckets, all from the comfort of your command line interface.
+This is the official command line tool for [Cosmic](https://cosmicjs.com).  Use it to log in to your Cosmic account, manage Buckets, data, files and users within your Buckets, all from the comfort of your command line interface.
 
 ## 🛠️ Installation
 
