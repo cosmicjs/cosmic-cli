@@ -12,7 +12,7 @@ function handler() {
   async.series([
     function() {
       var PORT = process.env.PORT || 3000
-      var start_command = './node_modules/.bin/cross-env COSMIC_BUCKET=' + bucket_opts.slug + ' COSMIC_READ_KEY=' + bucket_opts.read_key + ' PORT=' + PORT + ' npm start;'
+      var start_command = __dirname +  '/../node_modules/.bin/cross-env COSMIC_BUCKET=' + bucket_opts.slug + ' COSMIC_READ_KEY=' + bucket_opts.read_key + ' PORT=' + PORT + ' npm start;'
       console.log(start_command)
       print.success('Starting app on port number ' + PORT + ' connected to Bucket ' + bucket_opts.slug + '.  Open your browser to http://localhost:' + PORT)
       var child = exec(start_command, function(error, stdout, stderr) {
