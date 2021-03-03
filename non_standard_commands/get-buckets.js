@@ -5,9 +5,9 @@ function handler(options) {
   var invokedCmd = options.invokedCmd
   var token = options.token
   request.get({
-    url: 'https://api.cosmicjs.com/v1/buckets',
+    url: 'https://api.cosmicjs.com/v2/buckets',
     headers: {
-      'Authorization': token
+      'Authorization': `Bearer ${token}`
     },
     json: true
   }, function(err, httpResponse, body) {

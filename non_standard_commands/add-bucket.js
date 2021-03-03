@@ -11,14 +11,9 @@ function handler(options) {
     slug: invokedCmd.slug,
     title: invokedCmd.title,
     cluster: invokedCmd.cluster,
-    object_types: invokedCmd.object_types,
-    objects: invokedCmd.objects,
-    media: invokedCmd.media,
     media_folders: invokedCmd.media_folders,
     webhooks: invokedCmd.webhooks,
-    extensions: invokedCmd.extensions,
-    read_key: invokedCmd.read_key,
-    write_key: invokedCmd.write_key
+    extensions: invokedCmd.extensions
   }
 
   var res

@@ -25,10 +25,11 @@ commands.forEach(function(command) {
   var buildUp = program
     .command(command.cmd)
     .description(command.description)
-
-  command.options.forEach(function(option) {
-    buildUp.option(option.flags, option.description)
-  })
+  if (command.options) {
+    command.options.forEach(function(option) {
+      buildUp.option(option.flags, option.description)
+    })
+  }
 
   var regExp = /\[([^\]]+)\]/
   var argumentParamName = regExp.exec(command.cmd)

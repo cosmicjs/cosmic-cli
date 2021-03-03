@@ -146,15 +146,10 @@ For a list of the options for a command, use `cosmic [command] -h`
 
 *   begin                          `Guide to Getting Started`
 *   login                        
+*   init                           `init starter app`
 *   which-user                     `outputs the email of the current user`
 *   which-bucket                   `outputs the slug of the current Bucket`
-*   which-app                      `outputs the slug of the current app`
 *   get-buckets [options]          `shows Buckets available to user`
-*   install-app                    `installs an app to your bucket and downloads the repo to your machine`
-*   deploy-app [options]           `deploys an app to the Cosmic App Server`
-*   view-app                       `Opens browser window with demo link`
-*   browse-apps [options]          `search for apps or see all`
-*   start-app                      `starts a downloaded app on your machine`
 *   get-bucket [options]           `get current bucket object`
 *   use-bucket [options] [slug]  
 *   add-bucket [options]         

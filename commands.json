@@ -31,14 +31,6 @@
     "options": [ ]
   },
   {
-    "cmd": "which-app",
-    "description": "outputs the slug of the current app",
-    "requiresToken": false,
-    "custom": true,
-    "customScript": "whichApp",
-    "options": [ ]
-  },
-  {
     "cmd": "get-buckets",
     "description": "shows Buckets available to user",
     "requiresToken": false,
@@ -51,14 +43,6 @@
         "description": "show Bucket info in JSON format"
       }
     ]
-  },
-  {
-    "cmd": "install-app",
-    "description": "installs an app to your bucket and downloads the repo to your machine",
-    "requiresToken": false,
-    "custom": true,
-    "customScript": "installApp",
-    "options": [ ]
   },
   {
     "cmd": "init [name]",
@@ -91,74 +75,13 @@
     "options": [ ]
   },
   {
-    "cmd": "deploy-app",
-    "description": "deploys an app to the Cosmic App Server",
-    "requiresToken": false,
-    "custom": true,
-    "customScript": "deployApp",
-    "options": [
-      {
-        "param": "branch",
-        "flags": "-b, --branch [value]",
-        "description": "indicate branch to use to deploy App"
-      },
-      {
-        "param": "repo_url",
-        "flags": "-r, --repo_url [value]",
-        "description": "[optional] override the repo used to deploy App"
-      },
-      {
-        "param": "force_deploy",
-        "flags": "-f, --force_deploy",
-        "description": "[optional] override the repo used to deploy App"
-      }
-    ]
-  },
-  {
-    "cmd": "view-app",
-    "description": "Opens browser window with demo link",
-    "requiresToken": false,
-    "custom": true,
-    "customScript": "viewApp",
-    "options": [ ]
-  },
-  {
-    "cmd": "browse-apps",
-    "description": "search for apps or see all",
-    "requiresToken": false,
-    "custom": true,
-    "customScript": "browseApps",
-    "options": [
-      {
-        "param": "q",
-        "flags": "-q, --q [value]",
-        "description": "query"
-      }
-    ]
-  },
-  {
-    "cmd": "start-app",
-    "description": "starts a downloaded app on your machine",
-    "requiresToken": false,
-    "custom": true,
-    "customScript": "startApp",
-    "options": [ ]
-  },
-  {
     "cmd": "get-bucket",
     "description": "get current bucket object",
     "requiresToken": false,
     "cosmicMethod": {
       "useBucket": true,
       "method": "getBucket"
-    },
-    "options": [
-      {
-        "param": "hide_metafields",
-        "flags": "-m, --hide_metafields",
-        "description": "hide the metafields on the returned bucket"
-      }
-    ]
+    }
   },
   {
     "cmd": "use-bucket [slug]",
@@ -202,55 +125,9 @@
         "description": "bucket title"
       },
       {
-        "param": "read_key",
-        "flags": "-k, --read_key [value]",
-        "description": "read key"
-      },
-      {
-        "param": "write_key",
-        "flags": "-w, --write_key [value]",
-        "description": "write key"
-      },
-      {
         "param": "cluster",
         "flags": "-c, --cluster [value]",
         "description": "Add this Bucket to a Cluster. ID of existing Cluster"
-      },
-      {
-        "param": "object_types",
-        "flags": "--object_types [value]",
-        "description": "[JSON String Array] Populate your Bucket with Object Types.",
-        "isJsonString": true
-      },
-      {
-        "param": "objects",
-        "flags": "--objects [value]",
-        "description": "[JSON String Array] Populate your Bucket with Objects.",
-        "isJsonString": true
-      },
-      {
-        "param": "media",
-        "flags": "--media [value]",
-        "description": "[JSON String Array] Populate your Bucket with Media.",
-        "isJsonString": true
-      },
-      {
-        "param": "media_folders",
-        "flags": "--media_folders [value]",
-        "description": "[JSON String Array] Populate your Bucket with Media Folders.",
-        "isJsonString": true
-      },
-      {
-        "param": "webhooks",
-        "flags": "--webhooks [value]",
-        "description": "[JSON String Array] Populate your Bucket with Webhooks.",
-        "isJsonString": true
-      },
-      {
-        "param": "extensions",
-        "flags": "--extensions [value]",
-        "description": "[JSON String Array] Populate your Bucket with Extensions.",
-        "isJsonString": true
       }
     ]
   },
@@ -264,9 +141,9 @@
     },
     "options": [
       {
-        "param": "id",
-        "flags": "--id [value]",
-        "description": "The Bucket id found as '_id'"
+        "param": "slug",
+        "flags": "--slug [value]",
+        "description": "The Bucket slug found as 'slug'"
       }
     ]
   },
@@ -281,7 +158,7 @@
     "options": [
       {
         "param": "type",
-        "cosmicParamName": "type_slug",
+        "cosmicParamName": "type",
         "flags": "-t, --type [value]",
         "description": "[optional] limit fetch to a specific type slug",
         "switchToCommandIfPresent": {
@@ -321,14 +198,9 @@
     },
     "options": [
       {
-        "param": "slug",
-        "flags": "-s, --slug [value]",
-        "description": "Object slug"
-      },
-      {
-        "param": "locale",
-        "flags": "--locale [value]",
-        "description": "[optional] specify locale filter"
+        "param": "id",
+        "flags": "-id, --id [value]",
+        "description": "Object id"
       },
       {
         "param": "status",
@@ -452,8 +324,8 @@
     },
     "options": [
       {
-        "param": "type_slug",
-        "flags": "-o, --type_slug [value]",
+        "param": "type",
+        "flags": "-o, --type [value]",
         "description": "Object Type slug"
       },
       {
@@ -506,13 +378,13 @@
     },
     "options": [
       {
-        "param": "slug",
-        "flags": "-s, --slug [value]",
-        "description": "Object slug"
+        "param": "id",
+        "flags": "-id, --id [value]",
+        "description": "Object id"
       },
       {
-        "param": "type_slug",
-        "flags": "-o, --type_slug [value]",
+        "param": "type",
+        "flags": "-o, --type [value]",
         "description": "add Object to Object Type"
       },
       {
@@ -560,9 +432,9 @@
     },
     "options": [
       {
-        "param": "slug",
-        "flags": "-s, --slug [value]",
-        "description": "Object slug to delete"
+        "param": "id",
+        "flags": "-id, --id [value]",
+        "description": "Object id to delete"
       }
     ]
   },
