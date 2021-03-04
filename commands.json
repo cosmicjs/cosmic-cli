@@ -75,15 +75,6 @@
     "options": [ ]
   },
   {
-    "cmd": "get-bucket",
-    "description": "get current bucket object",
-    "requiresToken": false,
-    "cosmicMethod": {
-      "useBucket": true,
-      "method": "getBucket"
-    }
-  },
-  {
     "cmd": "use-bucket [slug]",
     "description": "",
     "requiresToken": false,

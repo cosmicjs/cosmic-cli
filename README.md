@@ -69,7 +69,7 @@ Success
        title: 'Jane Doe',
        content: '<p>Something about Jane...</p>',
        metafields: [Array],
-       type_slug: 'authors',
+       type: 'authors',
        created: '2017-10-12T13:27:49.663Z',
        created_at: '2017-10-12T13:27:49.663Z',
        status: 'published',
@@ -104,7 +104,7 @@ $ cosmic edit-object-type -s planets --metafields '[{"title": "Radius","type":"t
 
 Creating an Object in the "Planets" Object Type:
 ```bash
-$ cosmic add-object --type_slug planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"},{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
+$ cosmic add-object --type planets --title Venus --metafields '[{"title": "Radius","type":"text", "key": "radius", "value": "3,760 miles"},{"title": "Distance from Sun","type":"text", "key": "distance_from_sun", "value": "67.24 million miles"}]'
 ```
 
 🏞 **Uploading Files to a Bucket**
@@ -123,13 +123,13 @@ Some commands allow for two types of input: argument based and json string based
 To add a new barebones Object with only a title that is of Object Type `planets`, there are two ways we could go about it, with equivalent results:
 
 ```bash
-$ cosmic add-object --type_slug planets --title Venus
+$ cosmic add-object --type planets --title Venus
 ```
 
 or
 
 ```bash
-$ cosmic add-object --json '{"type_slug": "planets", "title": "Venus"}'
+$ cosmic add-object --json '{"type": "planets", "title": "Venus"}'
 ```
 
 The json string option is convenient in some use cases, and is included on the following commands:
@@ -146,12 +146,11 @@ For a list of the options for a command, use `cosmic [command] -h`
 
 *   begin                          `Guide to Getting Started`
 *   login                        
-*   init                           `init starter app`
+*   init                           `init starter app` See [list of starter apps](https://www.cosmicjs.com/getting-started#getting-started-quickstart)
 *   which-user                     `outputs the email of the current user`
 *   which-bucket                   `outputs the slug of the current Bucket`
 *   get-buckets [options]          `shows Buckets available to user`
-*   get-bucket [options]           `get current bucket object`
-*   use-bucket [options] [slug]  
+*   use-bucket [options] [slug]  `read_key and write_key options required`
 *   add-bucket [options]         
 *   delete-bucket [options]      
 *   get-objects [options]        
@@ -166,6 +165,4 @@ For a list of the options for a command, use `cosmic [command] -h`
 *   add-media [options]          
 *   get-media [options]          
 *   delete-media [options]       
-*   add-webhook [options]        
-*   delete-webhook [options]     
 *   add-user [options]           
