@@ -118,6 +118,11 @@ function runCosmicCommand(command, invokedCmd, argObj) {
   }
 
   scope[cosmicMethod.method](params).then(function(res){
+    if (res.status && res.status !== 200) {
+      print.error('Error:')
+      console.log(res)
+      process.exit(1)
+    }
     print.success('Success')
     console.log(res)
     process.exit(0)
