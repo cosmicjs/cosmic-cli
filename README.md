@@ -60,7 +60,7 @@ Now using bucket simple-react-blog
 To test that we connected to the Bucket properly:
 
 ```bash
-$ cosmic get-objects --limit 1
+$ cosmic get-objects --query '{"type":"authors"}' --limit 1
 Success
 { objects:
    [ { _id: '59df6dd5fd8d731b2100118d',
@@ -129,7 +129,7 @@ $ cosmic add-object --type planets --title Venus
 or
 
 ```bash
-$ cosmic add-object --json '{"type": "planets", "title": "Venus"}'
+$ cosmic add-object --json '{"type":"planets","title":"Venus"}'
 ```
 
 The json string option is convenient in some use cases, and is included on the following commands:

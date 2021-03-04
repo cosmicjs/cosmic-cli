@@ -148,14 +148,15 @@
     },
     "options": [
       {
-        "param": "type",
-        "cosmicParamName": "type",
-        "flags": "-t, --type [value]",
-        "description": "[optional] limit fetch to a specific type slug",
+        "param": "query",
+        "cosmicParamName": "query",
+        "flags": "-q, --query [value]",
+        "description": "[optional] json value that limits fetch to a specific query properties",
         "switchToCommandIfPresent": {
-          "method": "getObjectsByType",
+          "method": "getObjects",
           "useBucket": true
-        }
+        },
+        "isJsonString": true
       },
       {
         "param": "limit",
@@ -166,6 +167,11 @@
         "param": "skip",
         "flags": "-s, --skip [value]",
         "description": "[optional] # objects to skip"
+      },
+      {
+        "param": "props",
+        "flags": "-p, --props [value]",
+        "description": "[optional] limit on properties returned from the response"
       },
       {
         "param": "locale",
@@ -196,7 +202,12 @@
       {
         "param": "status",
         "flags": "--status [value]",
-        "description": "[optional] specify locale filter"
+        "description": "[optional] specify status filter"
+      },
+      {
+        "param": "props",
+        "flags": "-p, --props [value]",
+        "description": "[optional] limit on properties returned from the response"
       }
     ]
   },
@@ -316,7 +327,7 @@
     "options": [
       {
         "param": "type",
-        "flags": "-o, --type [value]",
+        "flags": "-type, --type [value]",
         "description": "Object Type slug"
       },
       {
@@ -473,14 +484,9 @@
         "description": "[optional] # media objects to skip"
       },
       {
-        "param": "locale",
-        "flags": "--locale [value]",
-        "description": "[optional] specify locale filter"
-      },
-      {
-        "param": "status",
-        "flags": "--status [value]",
-        "description": "[optional] specify locale filter"
+        "param": "props",
+        "flags": "-p, --props [value]",
+        "description": "[optional] limit on properties returned from the response"
       }
     ]
   },
@@ -497,43 +503,6 @@
         "param": "id",
         "flags": "--id [value]",
         "description": "id of media to delete"
-      }
-    ]
-  },
-  {
-    "cmd": "add-webhook",
-    "description": "",
-    "requiresToken": false,
-    "cosmicMethod": {
-      "useBucket": true,
-      "method": "addWebhook"
-    },
-    "options": [
-      {
-        "param": "event",
-        "flags": "--event [value]",
-        "description": "enum: [object.created.draft, object.created.published, object.edited.draft, object.edited.published, object.deleted, media.created, media.edited, media.deleted]"
-      },
-      {
-        "param": "endpoint",
-        "flags": "--endpoint [value]",
-        "description": "The endpoint that will receive the data"
-      }
-    ]
-  },
-  {
-    "cmd": "delete-webhook",
-    "description": "",
-    "requiresToken": false,
-    "cosmicMethod": {
-      "useBucket": true,
-      "method": "deleteWebhook"
-    },
-    "options": [
-      {
-        "param": "id",
-        "flags": "--id [value]",
-        "description": "id of webhook to delete"
       }
     ]
   },
