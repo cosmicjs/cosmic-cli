@@ -432,6 +432,60 @@
     ]
   },
   {
+    "cmd": "add-object-revision",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "addObjectRevision"
+    },
+    "options": [
+      {
+        "param": "title",
+        "flags": "-t, --title [value]",
+        "description": "your Object title"
+      },
+      {
+        "param": "id",
+        "flags": "-id, --id [value]",
+        "description": "Object id"
+      },
+      {
+        "param": "slug",
+        "flags": "-s, --slug [value]",
+        "description": "Object slug"
+      },
+      {
+        "param": "content",
+        "flags": "-c, --content [value]",
+        "description": "add content to your Object"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "draft, published, defaults to published"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "add localization to the Object"
+      },
+      {
+        "param": "metafields",
+        "flags": "-m, --metafields [value]",
+        "description": "Default Metafields for each Object in this type",
+        "isJsonString": true
+      },
+      {
+        "param": "json",
+        "flags": "-j, --json [value]",
+        "description": "JSON string with specifications for the new Object. Ex: '[{\"type_slug\":\"my-obj-type\", \"slug\":\"my-slug\", \"title\": \"My new obj\"}]'",
+        "isJsonString": true,
+        "isWrapperParameter": true
+      }
+    ]
+  },
+  {
     "cmd": "edit-object",
     "description": "",
     "requiresToken": false,
