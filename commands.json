@@ -200,6 +200,53 @@
     ]
   },
   {
+    "cmd": "get-merge-request-objects",
+    "description": "",
+    "requiresToken": false,
+    "cosmicMethod": {
+      "useBucket": true,
+      "method": "getMergeRequestObjects"
+    },
+    "options": [
+      {
+        "param": "query",
+        "cosmicParamName": "query",
+        "flags": "-q, --query [value]",
+        "description": "[optional] json value that limits fetch to a specific query properties",
+        "switchToCommandIfPresent": {
+          "method": "getObjects",
+          "useBucket": true
+        },
+        "isJsonString": true
+      },
+      {
+        "param": "limit",
+        "flags": "-l, --limit [value]",
+        "description": "[optional] limit on number of objects to return"
+      },
+      {
+        "param": "skip",
+        "flags": "-s, --skip [value]",
+        "description": "[optional] # objects to skip"
+      },
+      {
+        "param": "props",
+        "flags": "-p, --props [value]",
+        "description": "[optional] limit on properties returned from the response"
+      },
+      {
+        "param": "locale",
+        "flags": "--locale [value]",
+        "description": "[optional] specify locale filter"
+      },
+      {
+        "param": "status",
+        "flags": "--status [value]",
+        "description": "[optional] specify locale filter"
+      }
+    ]
+  },
+  {
     "cmd": "get-object",
     "description": "",
     "requiresToken": false,
