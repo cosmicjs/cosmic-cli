@@ -45,6 +45,20 @@
     ]
   },
   {
+    "cmd": "get-projects",
+    "description": "shows Projects available to user",
+    "requiresToken": false,
+    "custom": true,
+    "customScript": "getProjects",
+    "options": [
+      {
+        "param": "json",
+        "flags": "-j, --json",
+        "description": "show Projects info in JSON format"
+      }
+    ]
+  },
+  {
     "cmd": "init [name]",
     "description": "installs a starter app to your machine",
     "requiresToken": false,
