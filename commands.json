@@ -209,12 +209,17 @@
     },
     "options": [
       {
+        "param": "id",
+        "flags": "-id, --id [value]",
+        "description": "Merge Request id"
+      },
+      {
         "param": "query",
         "cosmicParamName": "query",
         "flags": "-q, --query [value]",
         "description": "[optional] json value that limits fetch to a specific query properties",
         "switchToCommandIfPresent": {
-          "method": "getObjects",
+          "method": "getMergeRequestObjects",
           "useBucket": true
         },
         "isJsonString": true
