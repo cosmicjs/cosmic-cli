@@ -1,6 +1,6 @@
 {
   "name": "cosmic-cli",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "The official command line tool for Cosmic. Use it to log in to your Cosmic JS account, manage your Buckets and manage data, files and users withing your Buckets.",
   "main": "index.js",
   "bin": {
