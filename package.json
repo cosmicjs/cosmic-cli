@@ -11,7 +11,7 @@
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "configstore": "^3.1.1",
-    "cosmicjs": "^4.0.0",
+    "cosmicjs": "^4.1.0",
     "cross-env": "^7.0.2",
     "cryptiles": ">=4.1.2",
     "inquirer": "^6.2.2",
