@@ -607,6 +607,17 @@
         "param": "props",
         "flags": "-p, --props [value]",
         "description": "[optional] limit on properties returned from the response"
+      },
+      {
+        "param": "query",
+        "cosmicParamName": "query",
+        "flags": "-q, --query [value]",
+        "description": "[optional] json value that limits fetch to a specific query properties",
+        "switchToCommandIfPresent": {
+          "method": "getMedia",
+          "useBucket": true
+        },
+        "isJsonString": true
       }
     ]
   },
